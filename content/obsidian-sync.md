@@ -14,7 +14,7 @@ I use Obsidian for most of my note taking needs. But, the free version lacks one
 There are some plugins that provide this functionality:
 1. [Remotely Save](https://github.com/remotely-save/remotely-save)
    - Has options for various cloud platforms.
-   - Supports E2E.
+   - Supports E2E Encryption.
    - You need to pay cloud providers for storage.
 1. [Obsidian Git](https://github.com/Vinzent03/obsidian-git)
    - Has a lot of features and a good UI.
