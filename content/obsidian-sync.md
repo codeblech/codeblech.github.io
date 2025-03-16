@@ -1,7 +1,7 @@
 ---
 title: Obsidian Sync using Git
 draft: false
-description: Syncing Obidian notes across Linux, Windows, MacOS, and Android. Fuck iPhone.
+description: Syncing Obsidian notes across Linux, Windows, MacOS, and Android. Fuck iPhone.
 date: 2025-03-17
 tags:
   - obsidian
@@ -20,8 +20,8 @@ There are some plugins that provide this functionality:
    - Has a lot of features and a good UI.
    - Has poor mobile performance due to the use of [isomorphic-git](https://isomorphic-git.org/).
 
-Admittedly mostly as a fun exercise, I decided to roll my own sync layer.
-After some tinkering, I've successfully setup sync for my Obsidian notes between my android phone and my Linux machine. The steps are exactly the same even if you use Windows, MacOS or any other OS. You just need **git** installed.
+Mostly as a fun exercise, I decided to roll my own sync layer.
+After some tinkering, I've successfully set up sync for my Obsidian notes between my android phone and my Linux machine. The steps are exactly the same even if you use Windows, MacOS or any other OS. You just need **git** installed.
 
 ## Installation
 1. Install **Termux** from [GitHub](https://github.com/termux/termux-app) or [F-Droid](https://f-droid.org/packages/com.termux). You can also download it from Play Store (yuck).
@@ -80,7 +80,7 @@ git init
 ```bash
 git config --global --add safe.directory /path/to/repo
 ```
-6. .
+6. Add remote URL
 ```bash
 git branch -m main # rename branch if you want to
 git remote add origin <GITHUB-REPO-URL>
@@ -121,7 +121,7 @@ git remote -v # verify that remote url is added successfully
 git pull
 ```
 4. If any file in the remote repo has the same name as a file in this Obsidian Vault on the PC, the merge will fail. To solve this, rename the conflicting files, and run `git pull` again.
-5. Now, the local repository would have all the Obsidian notes from the phone.
+5. Now, the local repository will have all the Obsidian notes from the phone.
 
 ### Push notes to GitHub
 ```bash
@@ -165,7 +165,7 @@ You can stop here if you want, but the automation part is much more fun.
 
 ## Automation 
 ### Cron Job on PC
-A cron job is the simplest way to keep the notes synced on the PC. The script is lightweight so running it again and again won't cause any performance degradation. In future, I'd like to setup automatic sync on opening and closing Obsidian. Spoiler Alert...This is exactly what we'll setup on Android.
+A cron job is the simplest way to keep the notes synced on the PC. The script is lightweight, so running it again and again won't cause any performance degradation. In future, I'd like to setup automatic sync on opening and closing Obsidian. Spoiler Alert: This is exactly what we'll set up on Android.
 1. Save this script somewhere in your filesystem:
 ```bash
 #!/usr/bin/env bash
@@ -293,7 +293,7 @@ Now we'll create a Tasker profile that triggers the created task when you open a
 
 
 ## Is this finally it?
-Yes. This is finally it...for now. What have we achieved? Well, now our Obsidian notes on our android device and our PC are synced...kind of. There's a caveat. You can't work on the same note on both PC and the phone at the same time. This will create merge conflicts. Our scripts doesn't handle any merge conflicts, yet. I will keep the *last part of this blog* updated with all the syncing issues that I face and how to solve them. But other than that, the sync works really well. If you don't work on the same notes on different devices at the same time, you won't face any issues (hopefully)
+Yes. This is finally it...for now. What have we achieved? Well, now our Obsidian notes on our android device and our PC are synced...kind of. There's a caveat. You can't work on the same note on both PC and the phone at the same time. This will create merge conflicts. Our scripts don't handle any merge conflicts, yet. I will keep the *last part of this blog* updated with all the syncing issues that I face and how to solve them. But other than that, the sync works really well. If you don't work on the same notes on different devices at the same time, you won't face any issues (hopefully)
 
 ## Last part of this blog
 ### Git Object Corruption
@@ -311,7 +311,7 @@ This meant a Git object was corrupt and my index had an invalid pointer.
 rm .git/objects/1c/e2b73db9f9e6cb99df516618a29836c642fa5a
 ```
 
-2. If above step didn't work, rebuild the Git Index:
+2. If the above step didn't work, rebuild the Git Index:
 ```bash
 rm -f .git/index
 git reset
@@ -323,7 +323,7 @@ git fsck --full
 ```
 
 ### Dirty Fix
-After the quick fix, the commits and pushes were working again. If this doesn't fix your issue, the easiest way to solve that would be:
+After the quick fix, the commits and pushes were working again. If this doesn't fix your issue, the easiest way to solve that is:
 1. Delete the `.git` directory.
 2. Run the following commands:
 ```bash
