@@ -16,7 +16,7 @@ There are some plugins that provide this functionality:
    - Has options for various cloud platforms.
    - Supports E2E Encryption.
    - You need to pay cloud providers for storage.
-1. [Obsidian Git](https://github.com/Vinzent03/obsidian-git)
+2. [Obsidian Git](https://github.com/Vinzent03/obsidian-git)
    - Has a lot of features and a good UI.
    - Has poor mobile performance due to the use of [isomorphic-git](https://isomorphic-git.org/).
 
@@ -38,7 +38,7 @@ After some tinkering, I've successfully setup sync for my Obsidian notes between
 apt update
 ```
 
-3. Install Git:
+2. Install Git:
 ```bash
 apt install git
 ```
@@ -208,11 +208,11 @@ chmod +x /path/to/script.sh
 sudo dnf install cronie -y
 sudo systemctl enable --now crond
 ```
-3. Open the `crontab` editor:
+4. Open the `crontab` editor:
 ```bash
 crontab -e
 ```
-4. Add the following line at the bottom:
+5. Add the following line at the bottom:
 ```bash
 */10 * * * * /path/to/script.sh
 ```
