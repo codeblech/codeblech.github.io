@@ -1,6 +1,9 @@
 ---
-title: Welcome to Quartz
+title: codeblech
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+```poetry
+Welcome!
+```
+
+I’m Yash Malik. This is my little digital garden on the Internet — make yourself at home!
