@@ -1,6 +1,8 @@
 ---
 title: codeblech
 ---
+<img src="/banner.svg" alt="codeblech" >
+
 ```poetry
 Welcome!
 ```

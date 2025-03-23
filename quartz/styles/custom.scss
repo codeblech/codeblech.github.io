@@ -1,6 +1,14 @@
 @use "./base.scss";
 @use "./variables.scss" as *;
 
+
+body[data-slug="index"] img {
+  filter: invert(100%);
+}
+
+[saved-theme="dark"] body[data-slug="index"] img[src*="banner.svg"] {
+  filter: invert(0%);
+}
 pre.poetry {
   font-size: 1.4rem;
   font-family: biro_script_standardRgus;
