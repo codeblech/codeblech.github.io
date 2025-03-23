@@ -53,6 +53,38 @@ button.toc-header {
     list-style: none;
     margin: 0.5rem 0;
     padding: 0;
+    scrollbar-width: none;
+
+    // // Custom scrollbar styles for the ul
+    // &::-webkit-scrollbar {
+
+    //   width: 4px; // Width of the scrollbar
+    // }
+
+    // &::-webkit-scrollbar-track {
+    //   background: rgb(255, 255, 255, 0);
+    // }
+
+    // &::-webkit-scrollbar-thumb {
+    //   background: linear-gradient(to bottom, rgba(71, 84, 197, 0.3), rgba(177, 246, 248, 0.3));
+    //   border-radius: 10px; // Rounded corners for the thumb
+    // }
+
+    // &::-webkit-scrollbar-thumb:hover {
+    //   background: linear-gradient(to bottom, rgba(71, 84, 197, 0.4), rgba(177, 246, 248, 0.4));
+    // }
+
+    // :root[saved-theme="dark"] & {
+    //   &::-webkit-scrollbar-thumb {
+    //       background: linear-gradient(to bottom, rgba(177, 246, 248, 0.3), rgba(71, 84, 197, 0.3));
+    //       border-radius: 10px;
+    //     }
+
+    //     &::-webkit-scrollbar-thumb:hover {
+    //       background: linear-gradient(to bottom, rgba(177, 246, 248, 0.4), rgba(71, 84, 197, 0.4));
+    //     }
+    // }
+
     & > li > a {
       color: var(--dark);
       opacity: 0.35;
