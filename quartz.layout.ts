@@ -10,6 +10,7 @@ export const sharedPageComponents: SharedLayout = {
     links: {
       GitHub: "https://github.com/codeblech",
       Twitter: "https://x.com/codeblech",
+      Bluesky: "https://bsky.app/profile/codeblech.bsky.social",
     },
   }),
 }
