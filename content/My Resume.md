@@ -5,6 +5,9 @@ created: 2026-04-10
 tags:
   - note
 ---
+>[!Note]
+>A markdown version of this resume is present on [my Github](https://github.com/codeblech/codeblech.github.io/blob/bcdfc96c86c7dc16f4c978b70fcf9e9dd28fcf88/content/My%20Resume.md). The version on my website is generated using the markdown version.
+
 # Yash Malik
 
 Gurugram, India
