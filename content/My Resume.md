@@ -68,7 +68,7 @@ New Delhi, Remote
 **Other Contributions, *Contributor***  
 *Dec 2023 – Present*
 
-- Contributed to the documentation of SunPy, Claude (Anthropic), ChromaDB, auto-train (Hugging Face), ytmusicapi, Instaloader, mamba, and designed the [official logo](https://app.element.io/#/room/#sunpy-offtopic:openastronomy.org) for SunPy's Matrix channel
+- Designed a [logo](https://app.element.io/#/room/#sunpy-offtopic:openastronomy.org) for SunPy's Matrix channel
 
 ## Skills
 
