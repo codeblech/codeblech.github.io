@@ -12,6 +12,7 @@ export const sharedPageComponents: SharedLayout = {
       Twitter: "https://x.com/codeblech",
       Bluesky: "https://bsky.app/profile/codeblech.bsky.social",
       RSS: "https://yashmalik.tech/index.xml",
+      Resume: "https://yashmalik.tech/My-Resume"
     },
   }),
 }
