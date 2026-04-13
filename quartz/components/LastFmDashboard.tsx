@@ -36,9 +36,6 @@ export default ((userOpts: LastFmDashboardOptions) => {
                 <p class="lfm-eyebrow">Recent Scrobbles</p>
                 <h2>Latest listens</h2>
               </div>
-              <span class="lfm-chip" data-lfm-recent-status>
-                Syncing
-              </span>
             </div>
             <div class="lfm-row-header lfm-row-header-recent" aria-hidden="true">
               <span class="lfm-row-header-cover">Art</span>
@@ -845,13 +842,37 @@ export default ((userOpts: LastFmDashboardOptions) => {
         gap: 0.55rem 0.75rem;
       }
 
-      .lfm-recent-item,
+      .lfm-recent-list,
+      .lfm-ranked-list {
+        gap: 0.7rem;
+      }
+
+      .lfm-recent-item {
+        grid-template-columns: 44px minmax(0, 1fr) auto;
+        gap: 0.5rem 0.7rem;
+        padding: 0.65rem 0;
+        align-items: center;
+      }
+
       .lfm-ranked-item {
-        grid-template-columns: 44px minmax(0, 1fr);
+        grid-template-columns: 44px minmax(0, 1fr) auto;
+        grid-template-rows: auto auto;
+        gap: 0.3rem 0.75rem;
+        padding: 0.65rem 0;
+        align-items: start;
+      }
+
+      .lfm-ranked-item .lfm-cover-shell {
+        grid-column: 1;
+        grid-row: 1;
       }
 
       .lfm-ranked-item .lfm-rank {
-        grid-column: 2;
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: center;
+        align-self: start;
+        line-height: 1;
       }
 
       .lfm-ranked-item .lfm-ranked-title-copy,
@@ -859,11 +880,47 @@ export default ((userOpts: LastFmDashboardOptions) => {
         grid-column: 2;
       }
 
+      .lfm-ranked-item .lfm-ranked-title-copy {
+        grid-row: 1 / span 2;
+        align-self: center;
+      }
+
       .lfm-recent-item .lfm-playcount,
       .lfm-ranked-item .lfm-playcount {
-        grid-column: 2;
-        justify-self: start;
-        text-align: left;
+        grid-column: 3;
+        justify-self: end;
+        text-align: right;
+      }
+
+      .lfm-recent-item .lfm-playcount {
+        align-self: center;
+      }
+
+      .lfm-ranked-item .lfm-playcount {
+        grid-row: 1 / span 2;
+        align-self: center;
+      }
+
+      .lfm-item-meta {
+        margin-top: 0.12rem;
+        font-size: 0.84rem;
+      }
+
+      .lfm-recent-item .lfm-item-meta {
+        margin-top: 0.18rem;
+      }
+
+      .lfm-item-submeta {
+        margin-top: 0.08rem;
+        font-size: 0.75rem;
+      }
+
+      .lfm-recent-item .lfm-item-submeta {
+        margin-top: 0.03rem;
+      }
+
+      .lfm-playcount {
+        font-size: 0.74rem;
       }
 
       .lfm-cover-shell,
@@ -1079,16 +1136,12 @@ export default ((userOpts: LastFmDashboardOptions) => {
 
     function renderRecent(widget, tracks) {
       const listEl = widget.querySelector("[data-lfm-recent-list]")
-      const statusEl = widget.querySelector("[data-lfm-recent-status]")
-      if (!listEl || !statusEl) return
+      if (!listEl) return
 
       if (!tracks.length) {
         listEl.innerHTML = '<li class="lfm-empty-state">No recent scrobbles found.</li>'
-        statusEl.textContent = "Idle"
         return
       }
-
-      statusEl.textContent = tracks[0]?.["@attr"]?.nowplaying === "true" ? "Live" : "Updated"
 
       listEl.innerHTML = tracks
         .map((track) => {
@@ -1230,7 +1283,6 @@ export default ((userOpts: LastFmDashboardOptions) => {
       if (linkEl) linkEl.href = albumInfo?.url || track?.url || LASTFM_DASHBOARD_CONFIG.baseUrl
 
       renderStatsRow(statsEl, [
-        { label: "Your plays", value: albumInfo?.userplaycount ? formatNumber(albumInfo.userplaycount) : "" },
         { label: "Listeners", value: albumInfo?.listeners ? formatNumber(albumInfo.listeners) : "" },
         { label: "Global plays", value: albumInfo?.playcount ? formatNumber(albumInfo.playcount) : "" },
       ])
@@ -1290,10 +1342,6 @@ export default ((userOpts: LastFmDashboardOptions) => {
       if (linkEl) linkEl.href = artistInfo?.url || track?.url || LASTFM_DASHBOARD_CONFIG.baseUrl
 
       renderStatsRow(statsEl, [
-        {
-          label: "Your plays",
-          value: artistInfo?.stats?.userplaycount ? formatNumber(artistInfo.stats.userplaycount) : "",
-        },
         {
           label: "Listeners",
           value: artistInfo?.stats?.listeners ? formatNumber(artistInfo.stats.listeners) : "",
