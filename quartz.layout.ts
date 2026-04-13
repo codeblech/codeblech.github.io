@@ -1,18 +1,38 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
+const lastFmConfig = {
+  username: "yashmalik",
+  apiKey: "923933ce9c5a4e64c1221a53054046cf",
+  // useLibreFm: true,
+}
+
+const nowPlaying = Component.NowPlaying(lastFmConfig)
+const lastFmDashboard = Component.LastFmDashboard(lastFmConfig)
+
+const nowPlayingOnMusic = Component.ConditionalRender({
+  component: nowPlaying,
+  condition: (page) => page.fileData.slug === "music",
+})
+
+const lastFmDashboardOnMusic = Component.ConditionalRender({
+  component: lastFmDashboard,
+  condition: (page) => page.fileData.slug === "music",
+})
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [nowPlayingOnMusic, lastFmDashboardOnMusic],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/codeblech",
       Twitter: "https://x.com/codeblech",
       Bluesky: "https://bsky.app/profile/codeblech.bsky.social",
       RSS: "https://yashmalik.tech/index.xml",
-      Resume: "https://yashmalik.tech/My-Resume"
+      Resume: "https://yashmalik.tech/My-Resume",
+      Music: "/music",
     },
   }),
 }
@@ -21,8 +41,8 @@ export const sharedPageComponents: SharedLayout = {
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     // Component.ConditionalRender({
-      // component: Component.Breadcrumbs(),
-      // condition: (page) => page.fileData.slug !== "index",
+    // component: Component.Breadcrumbs(),
+    // condition: (page) => page.fileData.slug !== "index",
     // }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
@@ -55,7 +75,7 @@ export const defaultListPageLayout: PageLayout = {
   beforeBody: [
     // Component.Breadcrumbs(),
     Component.ArticleTitle(),
-    Component.ContentMeta()
+    Component.ContentMeta(),
   ],
   left: [
     Component.PageTitle(),

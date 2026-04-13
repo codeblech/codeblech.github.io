@@ -4,6 +4,8 @@ import FolderContent from "./pages/FolderContent"
 import NotFound from "./pages/404"
 import ArticleTitle from "./ArticleTitle"
 import Darkmode from "./Darkmode"
+import LastFmDashboard from "./LastFmDashboard"
+import NowPlaying from "./NowPlaying"
 import ReaderMode from "./ReaderMode"
 import Head from "./Head"
 import PageTitle from "./PageTitle"
@@ -30,6 +32,8 @@ export {
   TagContent,
   FolderContent,
   Darkmode,
+  LastFmDashboard,
+  NowPlaying,
   ReaderMode,
   Head,
   PageTitle,

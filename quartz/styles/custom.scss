@@ -2,7 +2,7 @@
 @use "./variables.scss" as *;
 
 
-body[data-slug="index"] img {
+body[data-slug="index"] img[src*="banner.svg"] {
   filter: invert(100%);
 }
 
