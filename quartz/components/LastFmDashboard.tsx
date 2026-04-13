@@ -36,215 +36,247 @@ export default ((userOpts: LastFmDashboardOptions) => {
       >
         <div class="lfm-grid">
           <article class="lfm-card lfm-card-recent" data-lfm-loading="true">
-            <div class="lfm-card-head">
-              <div>
-                <p class="lfm-eyebrow">Recent Scrobbles</p>
-                <h2>Latest listens</h2>
-              </div>
-            </div>
-            <div class="lfm-row-header lfm-row-header-recent" aria-hidden="true">
-              <span class="lfm-row-header-cover">Art</span>
-              <span>Name</span>
-              <span>Artist</span>
-              <span>Album</span>
-              <span>When</span>
-            </div>
-            <ol class="lfm-recent-list" data-lfm-recent-list>
-              <li class="lfm-empty-state">Pulling recent tracks.</li>
-            </ol>
-          </article>
-
-          <article class="lfm-card lfm-card-top-slice" data-lfm-top-card="tracks" data-lfm-loading="true">
-            <div class="lfm-panel-head">
-              <div>
-                <p class="lfm-eyebrow">Top Listening</p>
-                <h2>Top tracks</h2>
-              </div>
-              <div class="lfm-period-tabs">
-                {periods.map((period, index) => (
-                  <button
-                    type="button"
-                    class={`lfm-period-tab${index === 0 ? " is-active" : ""}`}
-                    data-lfm-period={period.value}
-                    data-lfm-kind="tracks"
-                  >
-                    {period.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div class="lfm-row-header lfm-row-header-top" aria-hidden="true">
-              <span class="lfm-row-header-cover">Art</span>
-              <span>#</span>
-              <span>Name</span>
-              <span>Artist</span>
-              <span>Plays</span>
-            </div>
-            <ol class="lfm-ranked-list" data-lfm-top-list="tracks">
-              <li class="lfm-empty-state">Loading top tracks.</li>
-            </ol>
-          </article>
-
-          <article class="lfm-card lfm-card-top-slice" data-lfm-top-card="artists" data-lfm-loading="true">
-            <div class="lfm-panel-head">
-              <div>
-                <p class="lfm-eyebrow">Top Listening</p>
-                <h2>Top artists</h2>
-              </div>
-              <div class="lfm-period-tabs">
-                {periods.map((period, index) => (
-                  <button
-                    type="button"
-                    class={`lfm-period-tab${index === 0 ? " is-active" : ""}`}
-                    data-lfm-period={period.value}
-                    data-lfm-kind="artists"
-                  >
-                    {period.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div class="lfm-row-header lfm-row-header-top" aria-hidden="true">
-              <span class="lfm-row-header-cover">Art</span>
-              <span>#</span>
-              <span>Name</span>
-              <span>Context</span>
-              <span>Plays</span>
-            </div>
-            <ol class="lfm-ranked-list" data-lfm-top-list="artists">
-              <li class="lfm-empty-state">Loading top artists.</li>
-            </ol>
-          </article>
-
-          <article class="lfm-card lfm-card-top-slice" data-lfm-top-card="albums" data-lfm-loading="true">
-            <div class="lfm-panel-head">
-              <div>
-                <p class="lfm-eyebrow">Top Listening</p>
-                <h2>Top albums</h2>
-              </div>
-              <div class="lfm-period-tabs">
-                {periods.map((period, index) => (
-                  <button
-                    type="button"
-                    class={`lfm-period-tab${index === 0 ? " is-active" : ""}`}
-                    data-lfm-period={period.value}
-                    data-lfm-kind="albums"
-                  >
-                    {period.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div class="lfm-row-header lfm-row-header-top" aria-hidden="true">
-              <span class="lfm-row-header-cover">Art</span>
-              <span>#</span>
-              <span>Name</span>
-              <span>Artist</span>
-              <span>Plays</span>
-            </div>
-            <ol class="lfm-ranked-list" data-lfm-top-list="albums">
-              <li class="lfm-empty-state">Loading top albums.</li>
-            </ol>
-          </article>
-
-          <article class="lfm-card lfm-card-spotlight" data-lfm-spotlight="album" data-lfm-loading="true">
-            <div class="lfm-card-head">
-              <div>
-                <p class="lfm-eyebrow">Album Spotlight</p>
-                <h2 data-lfm-album-title>Loading album</h2>
-              </div>
-              <span class="lfm-chip" data-lfm-album-chip>
-                Recent pick
-              </span>
-            </div>
-            <div class="lfm-spotlight-hero">
-              <div class="lfm-cover-shell lfm-cover-shell-large">
-                <img
-                  class="lfm-cover"
-                  data-lfm-album-cover
-                  src=""
-                  alt=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-                <div class="lfm-cover-fallback" data-lfm-album-fallback aria-hidden="true">
-                  LP
+            <div class="lfm-card-stage">
+              <div class="lfm-card-head">
+                <div>
+                  <p class="lfm-eyebrow">Recent Scrobbles</p>
+                  <h2>Latest listens</h2>
                 </div>
               </div>
-              <div class="lfm-spotlight-copy">
-                <a
-                  class="lfm-spotlight-link"
-                  data-lfm-album-link
-                  href={baseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Open on Last.fm
-                </a>
-                <p class="lfm-spotlight-meta" data-lfm-album-meta>
-                  Waiting for album metadata.
-                </p>
-                <div class="lfm-stat-row" data-lfm-album-stats></div>
-                <p class="lfm-summary" data-lfm-album-summary>
-                  Tracklist and stats will land here.
-                </p>
+              <div class="lfm-row-header lfm-row-header-recent" aria-hidden="true">
+                <span class="lfm-row-header-cover">Art</span>
+                <span>Name</span>
+                <span>Artist</span>
+                <span>Album</span>
+                <span>When</span>
               </div>
-            </div>
-            <div>
-              <p class="lfm-subtitle">Tracks</p>
-              <ol class="lfm-mini-list" data-lfm-album-tracks>
-                <li class="lfm-empty-state">No album tracks yet.</li>
+              <ol class="lfm-recent-list" data-lfm-recent-list>
+                <li class="lfm-empty-state">Pulling recent tracks.</li>
               </ol>
             </div>
           </article>
 
-          <article class="lfm-card lfm-card-spotlight" data-lfm-spotlight="artist" data-lfm-loading="true">
-            <div class="lfm-card-head">
-              <div>
-                <p class="lfm-eyebrow">Artist Spotlight</p>
-                <h2 data-lfm-artist-title>Loading artist</h2>
-              </div>
-              <span class="lfm-chip" data-lfm-artist-chip>
-                From latest track
-              </span>
-            </div>
-            <div class="lfm-spotlight-hero">
-              <div class="lfm-cover-shell lfm-cover-shell-large">
-                <img
-                  class="lfm-cover"
-                  data-lfm-artist-cover
-                  src=""
-                  alt=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-                <div class="lfm-cover-fallback" data-lfm-artist-fallback aria-hidden="true">
-                  ART
+          <article
+            class="lfm-card lfm-card-top-slice"
+            data-lfm-top-card="tracks"
+            data-lfm-loading="true"
+          >
+            <div class="lfm-card-stage">
+              <div class="lfm-panel-head">
+                <div>
+                  <p class="lfm-eyebrow">Top Listening</p>
+                  <h2>Top tracks</h2>
+                </div>
+                <div class="lfm-period-tabs">
+                  {periods.map((period, index) => (
+                    <button
+                      type="button"
+                      class={`lfm-period-tab${index === 0 ? " is-active" : ""}`}
+                      data-lfm-period={period.value}
+                      data-lfm-kind="tracks"
+                    >
+                      {period.label}
+                    </button>
+                  ))}
                 </div>
               </div>
-              <div class="lfm-spotlight-copy">
-                <a
-                  class="lfm-spotlight-link"
-                  data-lfm-artist-link
-                  href={baseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Open on Last.fm
-                </a>
-                <p class="lfm-spotlight-meta" data-lfm-artist-meta>
-                  Waiting for artist metadata.
-                </p>
-                <div class="lfm-stat-row" data-lfm-artist-stats></div>
-                <p class="lfm-summary" data-lfm-artist-summary>
-                  Bio, tags, and similar artists will show here.
-                </p>
+              <div class="lfm-row-header lfm-row-header-top" aria-hidden="true">
+                <span class="lfm-row-header-cover">Art</span>
+                <span>#</span>
+                <span>Name</span>
+                <span>Artist</span>
+                <span>Plays</span>
+              </div>
+              <ol class="lfm-ranked-list" data-lfm-top-list="tracks">
+                <li class="lfm-empty-state">Loading top tracks.</li>
+              </ol>
+            </div>
+          </article>
+
+          <article
+            class="lfm-card lfm-card-top-slice"
+            data-lfm-top-card="artists"
+            data-lfm-loading="true"
+          >
+            <div class="lfm-card-stage">
+              <div class="lfm-panel-head">
+                <div>
+                  <p class="lfm-eyebrow">Top Listening</p>
+                  <h2>Top artists</h2>
+                </div>
+                <div class="lfm-period-tabs">
+                  {periods.map((period, index) => (
+                    <button
+                      type="button"
+                      class={`lfm-period-tab${index === 0 ? " is-active" : ""}`}
+                      data-lfm-period={period.value}
+                      data-lfm-kind="artists"
+                    >
+                      {period.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div class="lfm-row-header lfm-row-header-top" aria-hidden="true">
+                <span class="lfm-row-header-cover">Art</span>
+                <span>#</span>
+                <span>Name</span>
+                <span>Context</span>
+                <span>Plays</span>
+              </div>
+              <ol class="lfm-ranked-list" data-lfm-top-list="artists">
+                <li class="lfm-empty-state">Loading top artists.</li>
+              </ol>
+            </div>
+          </article>
+
+          <article
+            class="lfm-card lfm-card-top-slice"
+            data-lfm-top-card="albums"
+            data-lfm-loading="true"
+          >
+            <div class="lfm-card-stage">
+              <div class="lfm-panel-head">
+                <div>
+                  <p class="lfm-eyebrow">Top Listening</p>
+                  <h2>Top albums</h2>
+                </div>
+                <div class="lfm-period-tabs">
+                  {periods.map((period, index) => (
+                    <button
+                      type="button"
+                      class={`lfm-period-tab${index === 0 ? " is-active" : ""}`}
+                      data-lfm-period={period.value}
+                      data-lfm-kind="albums"
+                    >
+                      {period.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div class="lfm-row-header lfm-row-header-top" aria-hidden="true">
+                <span class="lfm-row-header-cover">Art</span>
+                <span>#</span>
+                <span>Name</span>
+                <span>Artist</span>
+                <span>Plays</span>
+              </div>
+              <ol class="lfm-ranked-list" data-lfm-top-list="albums">
+                <li class="lfm-empty-state">Loading top albums.</li>
+              </ol>
+            </div>
+          </article>
+
+          <article
+            class="lfm-card lfm-card-spotlight"
+            data-lfm-spotlight="album"
+            data-lfm-loading="true"
+          >
+            <div class="lfm-card-stage">
+              <div class="lfm-spotlight-head">
+                <p class="lfm-eyebrow">Album Spotlight</p>
+                <span class="lfm-chip" data-lfm-album-chip>
+                  Recent pick
+                </span>
+              </div>
+              <h2 class="lfm-spotlight-title" data-lfm-album-title>
+                Loading album
+              </h2>
+              <div class="lfm-spotlight-hero">
+                <div class="lfm-cover-shell lfm-cover-shell-large">
+                  <img
+                    class="lfm-cover"
+                    data-lfm-album-cover
+                    src=""
+                    alt=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div class="lfm-cover-fallback" data-lfm-album-fallback aria-hidden="true">
+                    LP
+                  </div>
+                </div>
+                <div class="lfm-spotlight-copy">
+                  <a
+                    class="lfm-spotlight-link"
+                    data-lfm-album-link
+                    href={baseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open on Last.fm
+                  </a>
+                  <p class="lfm-spotlight-meta" data-lfm-album-meta>
+                    Waiting for album metadata.
+                  </p>
+                  <div class="lfm-stat-row" data-lfm-album-stats></div>
+                  <p class="lfm-summary" data-lfm-album-summary>
+                    Tracklist and stats will land here.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p class="lfm-subtitle">Tracks</p>
+                <ol class="lfm-mini-list" data-lfm-album-tracks>
+                  <li class="lfm-empty-state">No album tracks yet.</li>
+                </ol>
               </div>
             </div>
-            <div>
-              <p class="lfm-subtitle">Similar artists</p>
-              <div class="lfm-pill-row" data-lfm-artist-similar>
-                <span class="lfm-empty-state">No similar artists yet.</span>
+          </article>
+
+          <article
+            class="lfm-card lfm-card-spotlight"
+            data-lfm-spotlight="artist"
+            data-lfm-loading="true"
+          >
+            <div class="lfm-card-stage">
+              <div class="lfm-spotlight-head">
+                <p class="lfm-eyebrow">Artist Spotlight</p>
+                <span class="lfm-chip" data-lfm-artist-chip>
+                  From latest track
+                </span>
+              </div>
+              <h2 class="lfm-spotlight-title" data-lfm-artist-title>
+                Loading artist
+              </h2>
+              <div class="lfm-spotlight-hero">
+                <div class="lfm-cover-shell lfm-cover-shell-large">
+                  <img
+                    class="lfm-cover"
+                    data-lfm-artist-cover
+                    src=""
+                    alt=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div class="lfm-cover-fallback" data-lfm-artist-fallback aria-hidden="true">
+                    ART
+                  </div>
+                </div>
+                <div class="lfm-spotlight-copy">
+                  <a
+                    class="lfm-spotlight-link"
+                    data-lfm-artist-link
+                    href={baseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open on Last.fm
+                  </a>
+                  <p class="lfm-spotlight-meta" data-lfm-artist-meta>
+                    Waiting for artist metadata.
+                  </p>
+                  <div class="lfm-stat-row" data-lfm-artist-stats></div>
+                  <p class="lfm-summary" data-lfm-artist-summary>
+                    Bio, tags, and similar artists will show here.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p class="lfm-subtitle">Similar artists</p>
+                <div class="lfm-pill-row" data-lfm-artist-similar>
+                  <span class="lfm-empty-state">No similar artists yet.</span>
+                </div>
               </div>
             </div>
           </article>
@@ -266,6 +298,7 @@ export default ((userOpts: LastFmDashboardOptions) => {
 
     .lfm-card {
       position: relative;
+      isolation: isolate;
       overflow: hidden;
       border: 1px solid color-mix(in srgb, var(--secondary) 14%, white 86%);
       border-radius: 1.4rem;
@@ -280,6 +313,16 @@ export default ((userOpts: LastFmDashboardOptions) => {
         0 18px 34px rgba(17, 37, 68, 0.07),
         inset 0 1px 0 rgba(255, 255, 255, 0.48);
       padding: 1rem;
+    }
+
+    .lfm-card-stage {
+      position: relative;
+      z-index: 0;
+      transition:
+        filter 760ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: filter, opacity, transform;
     }
 
     .lfm-card-recent {
@@ -305,6 +348,20 @@ export default ((userOpts: LastFmDashboardOptions) => {
 
     .lfm-card-head h2 {
       margin: 0.1rem 0 0;
+      font-size: 1.08rem;
+      line-height: 1.2;
+      color: color-mix(in srgb, var(--darkgray) 85%, black 15%);
+    }
+
+    .lfm-spotlight-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .lfm-spotlight-title {
+      margin: 0.35rem 0 0;
       font-size: 1.08rem;
       line-height: 1.2;
       color: color-mix(in srgb, var(--darkgray) 85%, black 15%);
@@ -440,6 +497,8 @@ export default ((userOpts: LastFmDashboardOptions) => {
 
     .lfm-cover,
     .lfm-cover-fallback {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
     }
@@ -614,13 +673,6 @@ export default ((userOpts: LastFmDashboardOptions) => {
       color: color-mix(in srgb, var(--secondary) 72%, var(--darkgray) 28%);
     }
 
-    .lfm-card > * {
-      transition:
-        filter 420ms ease,
-        opacity 420ms ease,
-        transform 420ms ease;
-    }
-
     .lfm-card::after {
       content: "";
       position: absolute;
@@ -631,11 +683,11 @@ export default ((userOpts: LastFmDashboardOptions) => {
       pointer-events: none;
       backdrop-filter: blur(14px) saturate(135%);
       -webkit-backdrop-filter: blur(14px) saturate(135%);
-      transition: opacity 220ms ease;
+      transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
       z-index: 1;
     }
 
-    .lfm-card[data-lfm-loading="true"] > * {
+    .lfm-card[data-lfm-loading="true"] .lfm-card-stage {
       filter: blur(10px) saturate(0.82);
       opacity: 0.34;
       transform: scale(0.988);
@@ -771,6 +823,7 @@ export default ((userOpts: LastFmDashboardOptions) => {
     }
 
     :root[saved-theme="dark"] .lfm-card-head h2,
+    :root[saved-theme="dark"] .lfm-spotlight-title,
     :root[saved-theme="dark"] .lfm-panel-head h2,
     :root[saved-theme="dark"] .lfm-row-link,
     :root[saved-theme="dark"] .lfm-item-title strong,
@@ -808,9 +861,12 @@ export default ((userOpts: LastFmDashboardOptions) => {
       border-color: rgba(83, 155, 245, 0.28);
     }
 
-    :root[saved-theme="dark"] .lfm-card[data-lfm-loading="true"]::after {
-      background: rgba(16, 22, 34, 0.22);
+    :root[saved-theme="dark"] .lfm-card::after {
+      background: rgba(8, 12, 20, 0.42);
+      backdrop-filter: blur(14px) saturate(110%);
+      -webkit-backdrop-filter: blur(14px) saturate(110%);
     }
+
 
     :root[saved-theme="dark"] .lfm-ranked-item {
       border-top-color: rgba(255, 255, 255, 0.08);
@@ -1015,7 +1071,18 @@ export default ((userOpts: LastFmDashboardOptions) => {
       typeof window.addCleanup === "function" ? window.addCleanup.bind(window) : () => {}
     const relativeFormatter = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" })
     const topItemDetailsCache = new Map()
+    const topPeriodCache = new Map()
+    const topPeriodRequestCache = new Map()
+    const topListDomCache = new WeakMap()
     const loadingTimers = new WeakMap()
+    const loadingStartedAt = new WeakMap()
+    const periodSwapEnterDelayMs = 260
+    const topPeriodStorageKey = [
+      "lfm-dashboard-top-cache",
+      LASTFM_DASHBOARD_CONFIG.baseUrl,
+      LASTFM_DASHBOARD_CONFIG.username,
+      LASTFM_DASHBOARD_CONFIG.topLimit,
+    ].join(":")
 
     function normalizeAssetUrl(url) {
       if (typeof url !== "string") return ""
@@ -1039,6 +1106,12 @@ export default ((userOpts: LastFmDashboardOptions) => {
       return url.toString()
     }
 
+    function wait(ms) {
+      return new Promise((resolve) => {
+        window.setTimeout(resolve, ms)
+      })
+    }
+
     async function fetchJson(url) {
       const response = await fetch(url)
       if (!response.ok) throw new Error("request failed")
@@ -1057,6 +1130,41 @@ export default ((userOpts: LastFmDashboardOptions) => {
       }
 
       return topItemDetailsCache.get(url)
+    }
+
+    function readTopPeriodStorage() {
+      try {
+        const raw = window.sessionStorage?.getItem(topPeriodStorageKey)
+        if (!raw) return {}
+
+        const parsed = JSON.parse(raw)
+        return parsed && typeof parsed === "object" ? parsed : {}
+      } catch (_error) {
+        return {}
+      }
+    }
+
+    function hydrateTopPeriodCache(period) {
+      if (topPeriodCache.has(period)) {
+        return topPeriodCache.get(period)
+      }
+
+      const stored = readTopPeriodStorage()[period]
+      if (!stored || typeof stored !== "object") return null
+
+      topPeriodCache.set(period, stored)
+      return stored
+    }
+
+    function persistTopPeriodCache(period, data) {
+      topPeriodCache.set(period, data)
+
+      try {
+        const stored = readTopPeriodStorage()
+        stored[period] = data
+        window.sessionStorage?.setItem(topPeriodStorageKey, JSON.stringify(stored))
+      } catch (_error) {
+      }
     }
 
     function pickLargestImage(images) {
@@ -1304,6 +1412,82 @@ export default ((userOpts: LastFmDashboardOptions) => {
         .join("")
     }
 
+    function getTopListCache(widget, kind) {
+      let widgetCache = topListDomCache.get(widget)
+      if (!widgetCache) {
+        widgetCache = new Map()
+        topListDomCache.set(widget, widgetCache)
+      }
+
+      if (!widgetCache.has(kind)) {
+        widgetCache.set(kind, new Map())
+      }
+
+      return widgetCache.get(kind)
+    }
+
+    function stashTopListDom(widget, kind) {
+      const listEl = widget.querySelector('[data-lfm-top-list="' + kind + '"]')
+      if (!listEl) return
+
+      const currentPeriod = widget.getAttribute("data-lfm-rendered-period-" + kind)
+      const currentState = widget.getAttribute("data-lfm-rendered-state-" + kind)
+      if (!currentPeriod || currentState !== "ready") return
+
+      const cache = getTopListCache(widget, kind)
+      const fragment = document.createDocumentFragment()
+      while (listEl.firstChild) {
+        fragment.appendChild(listEl.firstChild)
+      }
+      cache.set(currentPeriod, fragment)
+    }
+
+    function restoreTopListDom(widget, kind, period) {
+      const listEl = widget.querySelector('[data-lfm-top-list="' + kind + '"]')
+      if (!listEl) return false
+
+      const cache = getTopListCache(widget, kind)
+      const fragment = cache.get(period)
+      if (!fragment) return false
+
+      listEl.replaceChildren()
+      listEl.appendChild(fragment)
+      widget.setAttribute("data-lfm-rendered-period-" + kind, period)
+      widget.setAttribute("data-lfm-rendered-state-" + kind, "ready")
+      return true
+    }
+
+    function renderRankedListForPeriod(widget, kind, period, items) {
+      const currentPeriod = widget.getAttribute("data-lfm-rendered-period-" + kind)
+      const currentState = widget.getAttribute("data-lfm-rendered-state-" + kind)
+      if (currentPeriod === period && currentState === "ready") return
+
+      if (currentPeriod && currentPeriod !== period && currentState === "ready") {
+        stashTopListDom(widget, kind)
+      }
+
+      if (restoreTopListDom(widget, kind, period)) return
+
+      renderRankedList(widget, kind, items)
+      widget.setAttribute("data-lfm-rendered-period-" + kind, period)
+      widget.setAttribute("data-lfm-rendered-state-" + kind, "ready")
+    }
+
+    function renderTopListMessage(widget, kind, period, message) {
+      const currentPeriod = widget.getAttribute("data-lfm-rendered-period-" + kind)
+      const currentState = widget.getAttribute("data-lfm-rendered-state-" + kind)
+      if (currentPeriod && currentPeriod !== period && currentState === "ready") {
+        stashTopListDom(widget, kind)
+      }
+
+      const listEl = widget.querySelector('[data-lfm-top-list="' + kind + '"]')
+      if (!listEl) return
+
+      listEl.innerHTML = '<li class="lfm-empty-state">' + message + "</li>"
+      widget.setAttribute("data-lfm-rendered-period-" + kind, period)
+      widget.setAttribute("data-lfm-rendered-state-" + kind, "message")
+    }
+
     function renderStatsRow(container, stats) {
       if (!container) return
       const pills = stats.filter((entry) => entry && entry.value)
@@ -1458,26 +1642,51 @@ export default ((userOpts: LastFmDashboardOptions) => {
     }
 
     async function fetchTop(period) {
-      const [tracksData, albumsData, artistsData] = await Promise.all([
-        fetchJson(buildApiUrl("user.gettoptracks", { period, limit: LASTFM_DASHBOARD_CONFIG.topLimit })),
-        fetchJson(buildApiUrl("user.gettopalbums", { period, limit: LASTFM_DASHBOARD_CONFIG.topLimit })),
-        fetchJson(buildApiUrl("user.gettopartists", { period, limit: LASTFM_DASHBOARD_CONFIG.topLimit })),
-      ])
+      const cached = hydrateTopPeriodCache(period)
+      if (cached) return cached
 
-      const rawTracks = Array.isArray(tracksData?.toptracks?.track) ? tracksData.toptracks.track : []
-      const rawAlbums = Array.isArray(albumsData?.topalbums?.album) ? albumsData.topalbums.album : []
-      const rawArtists = Array.isArray(artistsData?.topartists?.artist) ? artistsData.topartists.artist : []
-
-      const [tracks, artists] = await Promise.all([
-        Promise.all(rawTracks.map((item) => enrichTopTrack(item))),
-        Promise.all(rawArtists.map((item) => enrichTopArtist(item))),
-      ])
-
-      return {
-        tracks,
-        albums: rawAlbums,
-        artists,
+      if (topPeriodRequestCache.has(period)) {
+        return topPeriodRequestCache.get(period)
       }
+
+      const request = (async () => {
+        try {
+          const [tracksData, albumsData, artistsData] = await Promise.all([
+            fetchJson(
+              buildApiUrl("user.gettoptracks", { period, limit: LASTFM_DASHBOARD_CONFIG.topLimit }),
+            ),
+            fetchJson(
+              buildApiUrl("user.gettopalbums", { period, limit: LASTFM_DASHBOARD_CONFIG.topLimit }),
+            ),
+            fetchJson(
+              buildApiUrl("user.gettopartists", { period, limit: LASTFM_DASHBOARD_CONFIG.topLimit }),
+            ),
+          ])
+
+          const rawTracks = Array.isArray(tracksData?.toptracks?.track) ? tracksData.toptracks.track : []
+          const rawAlbums = Array.isArray(albumsData?.topalbums?.album) ? albumsData.topalbums.album : []
+          const rawArtists = Array.isArray(artistsData?.topartists?.artist) ? artistsData.topartists.artist : []
+
+          const [tracks, artists] = await Promise.all([
+            Promise.all(rawTracks.map((item) => enrichTopTrack(item))),
+            Promise.all(rawArtists.map((item) => enrichTopArtist(item))),
+          ])
+
+          const topData = {
+            tracks,
+            albums: rawAlbums,
+            artists,
+          }
+
+          persistTopPeriodCache(period, topData)
+          return topData
+        } finally {
+          topPeriodRequestCache.delete(period)
+        }
+      })()
+
+      topPeriodRequestCache.set(period, request)
+      return request
     }
 
     async function fetchSpotlights(track) {
@@ -1522,11 +1731,8 @@ export default ((userOpts: LastFmDashboardOptions) => {
 
     function renderTopError(widget) {
       ;["tracks", "albums", "artists"].forEach((kind) => {
-        const listEl = widget.querySelector('[data-lfm-top-list="' + kind + '"]')
-        if (listEl) {
-          listEl.innerHTML =
-            '<li class="lfm-empty-state">Could not load this list from Last.fm right now.</li>'
-        }
+        const period = widget.getAttribute("data-lfm-period-" + kind) || "1month"
+        renderTopListMessage(widget, kind, period, "Could not load this list from Last.fm right now.")
       })
     }
 
@@ -1544,14 +1750,19 @@ export default ((userOpts: LastFmDashboardOptions) => {
       }
 
       if (loading) {
+        loadingStartedAt.set(card, Date.now())
         card.setAttribute("data-lfm-loading", "true")
         return
       }
 
+      const startedAt = loadingStartedAt.get(card) || 0
+      const elapsed = startedAt ? Date.now() - startedAt : 0
+      const delay = Math.max(0, 320 - elapsed)
       const timer = window.setTimeout(() => {
         card.removeAttribute("data-lfm-loading")
+        loadingStartedAt.delete(card)
         loadingTimers.delete(card)
-      }, 120)
+      }, delay)
 
       loadingTimers.set(card, timer)
     }
@@ -1563,14 +1774,13 @@ export default ((userOpts: LastFmDashboardOptions) => {
       }
 
       try {
-        const topData = await fetchTop(period)
-        renderRankedList(widget, kind, topData[kind] || [])
+        const [topData] = await Promise.all([
+          fetchTop(period),
+          animate ? wait(periodSwapEnterDelayMs) : Promise.resolve(),
+        ])
+        renderRankedListForPeriod(widget, kind, period, topData[kind] || [])
       } catch (_error) {
-        const listEl = widget.querySelector('[data-lfm-top-list="' + kind + '"]')
-        if (listEl) {
-          listEl.innerHTML =
-            '<li class="lfm-empty-state">Could not load this list from Last.fm right now.</li>'
-        }
+        renderTopListMessage(widget, kind, period, "Could not load this list from Last.fm right now.")
       } finally {
         if (card) {
           setCardLoading(card, false)
