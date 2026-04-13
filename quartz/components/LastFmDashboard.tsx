@@ -468,6 +468,12 @@ export default ((userOpts: LastFmDashboardOptions) => {
     .lfm-item-copy,
     .lfm-spotlight-copy {
       min-width: 0;
+      overflow: hidden;
+    }
+
+    .lfm-inline-meta,
+    .lfm-inline-submeta {
+      display: none;
     }
 
     .lfm-row-link,
@@ -479,6 +485,8 @@ export default ((userOpts: LastFmDashboardOptions) => {
     }
 
     .lfm-row-link {
+      display: block;
+      width: 100%;
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -494,6 +502,8 @@ export default ((userOpts: LastFmDashboardOptions) => {
     }
 
     .lfm-row-cell {
+      display: block;
+      width: 100%;
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -544,6 +554,11 @@ export default ((userOpts: LastFmDashboardOptions) => {
     .lfm-item-submeta {
       margin-top: 0.1rem;
       font-size: 0.77rem;
+    }
+
+    .lfm-recent-item .lfm-playcount,
+    .lfm-ranked-item .lfm-playcount {
+      align-self: center;
     }
 
     .lfm-playcount {
@@ -744,15 +759,59 @@ export default ((userOpts: LastFmDashboardOptions) => {
       }
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 1536px) {
       .lfm-row-header-recent,
-      .lfm-recent-item {
-        grid-template-columns: 44px minmax(0, 1.8fr) minmax(150px, 1.1fr) minmax(130px, 0.8fr);
+      .lfm-row-header-top {
+        display: none;
       }
 
-      .lfm-row-header-recent span:nth-child(4),
-      .lfm-recent-item .lfm-row-cell-album {
+      .lfm-recent-list,
+      .lfm-ranked-list {
+        gap: 0.9rem;
+      }
+
+      .lfm-recent-item,
+      .lfm-ranked-item {
+        grid-template-columns: 52px minmax(0, 1fr) auto;
+        gap: 0.7rem 0.85rem;
+        align-items: start;
+        padding: 0.85rem 0;
+      }
+
+      .lfm-ranked-item {
+        grid-template-columns: 52px 2.5rem minmax(0, 1fr) auto;
+      }
+
+      .lfm-recent-item .lfm-row-cell-artist,
+      .lfm-recent-item .lfm-row-cell-album,
+      .lfm-ranked-item .lfm-row-cell-context {
         display: none;
+      }
+
+      .lfm-recent-title-copy,
+      .lfm-ranked-title-copy {
+        align-self: center;
+      }
+
+      .lfm-inline-meta,
+      .lfm-inline-submeta {
+        display: block;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .lfm-spotlight-hero {
+        grid-template-columns: 96px minmax(0, 1fr);
+      }
+
+      .lfm-cover-shell-large {
+        width: 96px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .lfm-recent-item {
+        grid-template-columns: 44px minmax(0, 1fr) auto;
       }
 
       .lfm-spotlight-hero {
@@ -769,7 +828,8 @@ export default ((userOpts: LastFmDashboardOptions) => {
         padding: 0.9rem;
       }
 
-      .lfm-card-head {
+      .lfm-card-head,
+      .lfm-panel-head {
         flex-direction: column;
       }
 
@@ -777,14 +837,33 @@ export default ((userOpts: LastFmDashboardOptions) => {
         justify-content: flex-start;
       }
 
-      .lfm-row-header-top,
-      .lfm-ranked-item {
-        grid-template-columns: 44px 2rem minmax(0, 1.8fr) minmax(110px, 0.8fr);
+      .lfm-card-head .lfm-chip {
+        align-self: flex-start;
       }
 
-      .lfm-row-header-top span:nth-child(4),
-      .lfm-ranked-item .lfm-row-cell-context {
-        display: none;
+      .lfm-ranked-item {
+        gap: 0.55rem 0.75rem;
+      }
+
+      .lfm-recent-item,
+      .lfm-ranked-item {
+        grid-template-columns: 44px minmax(0, 1fr);
+      }
+
+      .lfm-ranked-item .lfm-rank {
+        grid-column: 2;
+      }
+
+      .lfm-ranked-item .lfm-ranked-title-copy,
+      .lfm-recent-item .lfm-recent-title-copy {
+        grid-column: 2;
+      }
+
+      .lfm-recent-item .lfm-playcount,
+      .lfm-ranked-item .lfm-playcount {
+        grid-column: 2;
+        justify-self: start;
+        text-align: left;
       }
 
       .lfm-cover-shell,
@@ -1034,12 +1113,16 @@ export default ((userOpts: LastFmDashboardOptions) => {
               : "",
             '<div class="lfm-cover-fallback' + (cover ? " is-hidden" : "") + '" aria-hidden="true">♫</div>',
             "</div>",
+            '<div class="lfm-item-copy lfm-recent-title-copy">',
             '<a class="lfm-row-link" href="' +
               trackUrl +
               '" target="_blank" rel="noopener noreferrer">' +
               title +
               "</a>",
-            '<span class="lfm-row-cell">' + artist + "</span>",
+            '<p class="lfm-item-meta lfm-inline-meta">' + artist + "</p>",
+            '<p class="lfm-item-submeta lfm-inline-submeta">' + album + "</p>",
+            "</div>",
+            '<span class="lfm-row-cell lfm-row-cell-artist">' + artist + "</span>",
             '<span class="lfm-row-cell lfm-row-cell-album">' + album + "</span>",
             '<span class="lfm-playcount">' + timeLabel + "</span>",
             "</li>",
@@ -1081,11 +1164,14 @@ export default ((userOpts: LastFmDashboardOptions) => {
               "</div>",
             "</div>",
             '<span class="lfm-rank">#' + (index + 1) + "</span>",
+            '<div class="lfm-item-copy lfm-ranked-title-copy">',
             '<a class="lfm-row-link" href="' +
               url +
               '" target="_blank" rel="noopener noreferrer">' +
               title +
               "</a>",
+            '<p class="lfm-item-meta lfm-inline-meta">' + context + "</p>",
+            "</div>",
             '<span class="lfm-row-cell lfm-row-cell-context">' + context + "</span>",
             '<span class="lfm-playcount">' +
               (item?.playcount ? formatNumber(item.playcount) + " plays" : "No plays") +
