@@ -27,8 +27,17 @@ export default ((userOpts: LastFmDashboardOptions) => {
   ] as const
 
   const LastFmDashboard: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
+    const recentSkeletonItems = Array.from({ length: opts.recentLimit ?? defaultOptions.recentLimit })
+    const topSkeletonItems = Array.from({ length: opts.topLimit ?? defaultOptions.topLimit })
+    const spotlightTrackSkeletonItems = Array.from({ length: 6 })
+    const similarArtistSkeletonItems = Array.from({ length: 5 })
+
     return (
-      <section class={classNames(displayClass, "lfm-dashboard")} data-lastfm-dashboard>
+      <section
+        class={classNames(displayClass, "lfm-dashboard")}
+        data-lastfm-dashboard
+        data-lfm-hydrated="false"
+      >
         <div class="lfm-grid">
           <article class="lfm-card lfm-card-recent">
             <div class="lfm-card-head">
@@ -45,7 +54,21 @@ export default ((userOpts: LastFmDashboardOptions) => {
               <span>When</span>
             </div>
             <ol class="lfm-recent-list" data-lfm-recent-list>
-              <li class="lfm-empty-state">Pulling recent tracks.</li>
+              {recentSkeletonItems.map(() => (
+                <li class="lfm-recent-item lfm-skeleton-item" aria-hidden="true">
+                  <div class="lfm-cover-shell lfm-cover-shell-inline">
+                    <div class="lfm-cover-fallback">♫</div>
+                  </div>
+                  <div class="lfm-item-copy lfm-recent-title-copy">
+                    <span class="lfm-skeleton-line lfm-skeleton-line-title"></span>
+                    <span class="lfm-skeleton-line lfm-skeleton-line-meta"></span>
+                    <span class="lfm-skeleton-line lfm-skeleton-line-submeta"></span>
+                  </div>
+                  <span class="lfm-row-cell lfm-row-cell-artist lfm-skeleton-line"></span>
+                  <span class="lfm-row-cell lfm-row-cell-album lfm-skeleton-line"></span>
+                  <span class="lfm-playcount lfm-skeleton-line lfm-skeleton-line-time"></span>
+                </li>
+              ))}
             </ol>
           </article>
 
@@ -76,7 +99,20 @@ export default ((userOpts: LastFmDashboardOptions) => {
               <span>Plays</span>
             </div>
             <ol class="lfm-ranked-list" data-lfm-top-list="tracks">
-              <li class="lfm-empty-state">Loading top tracks.</li>
+              {topSkeletonItems.map((_, index) => (
+                <li class="lfm-ranked-item lfm-skeleton-item" aria-hidden="true">
+                  <div class="lfm-cover-shell lfm-cover-shell-inline">
+                    <div class="lfm-cover-fallback">♫</div>
+                  </div>
+                  <span class="lfm-rank">#{index + 1}</span>
+                  <div class="lfm-item-copy lfm-ranked-title-copy">
+                    <span class="lfm-skeleton-line lfm-skeleton-line-title"></span>
+                    <span class="lfm-skeleton-line lfm-skeleton-line-meta"></span>
+                  </div>
+                  <span class="lfm-row-cell lfm-row-cell-context lfm-skeleton-line"></span>
+                  <span class="lfm-playcount lfm-skeleton-line lfm-skeleton-line-time"></span>
+                </li>
+              ))}
             </ol>
           </article>
 
@@ -107,7 +143,20 @@ export default ((userOpts: LastFmDashboardOptions) => {
               <span>Plays</span>
             </div>
             <ol class="lfm-ranked-list" data-lfm-top-list="artists">
-              <li class="lfm-empty-state">Loading top artists.</li>
+              {topSkeletonItems.map((_, index) => (
+                <li class="lfm-ranked-item lfm-skeleton-item" aria-hidden="true">
+                  <div class="lfm-cover-shell lfm-cover-shell-inline">
+                    <div class="lfm-cover-fallback">ART</div>
+                  </div>
+                  <span class="lfm-rank">#{index + 1}</span>
+                  <div class="lfm-item-copy lfm-ranked-title-copy">
+                    <span class="lfm-skeleton-line lfm-skeleton-line-title"></span>
+                    <span class="lfm-skeleton-line lfm-skeleton-line-meta"></span>
+                  </div>
+                  <span class="lfm-row-cell lfm-row-cell-context lfm-skeleton-line"></span>
+                  <span class="lfm-playcount lfm-skeleton-line lfm-skeleton-line-time"></span>
+                </li>
+              ))}
             </ol>
           </article>
 
@@ -138,7 +187,20 @@ export default ((userOpts: LastFmDashboardOptions) => {
               <span>Plays</span>
             </div>
             <ol class="lfm-ranked-list" data-lfm-top-list="albums">
-              <li class="lfm-empty-state">Loading top albums.</li>
+              {topSkeletonItems.map((_, index) => (
+                <li class="lfm-ranked-item lfm-skeleton-item" aria-hidden="true">
+                  <div class="lfm-cover-shell lfm-cover-shell-inline">
+                    <div class="lfm-cover-fallback">LP</div>
+                  </div>
+                  <span class="lfm-rank">#{index + 1}</span>
+                  <div class="lfm-item-copy lfm-ranked-title-copy">
+                    <span class="lfm-skeleton-line lfm-skeleton-line-title"></span>
+                    <span class="lfm-skeleton-line lfm-skeleton-line-meta"></span>
+                  </div>
+                  <span class="lfm-row-cell lfm-row-cell-context lfm-skeleton-line"></span>
+                  <span class="lfm-playcount lfm-skeleton-line lfm-skeleton-line-time"></span>
+                </li>
+              ))}
             </ol>
           </article>
 
@@ -188,7 +250,13 @@ export default ((userOpts: LastFmDashboardOptions) => {
             <div>
               <p class="lfm-subtitle">Tracks</p>
               <ol class="lfm-mini-list" data-lfm-album-tracks>
-                <li class="lfm-empty-state">No album tracks yet.</li>
+                {spotlightTrackSkeletonItems.map(() => (
+                  <li class="lfm-mini-item lfm-skeleton-mini-item" aria-hidden="true">
+                    <span class="lfm-skeleton-line lfm-skeleton-line-mini-index"></span>
+                    <span class="lfm-skeleton-line lfm-skeleton-line-mini-title"></span>
+                    <span class="lfm-skeleton-line lfm-skeleton-line-mini-time"></span>
+                  </li>
+                ))}
               </ol>
             </div>
           </article>
@@ -239,7 +307,9 @@ export default ((userOpts: LastFmDashboardOptions) => {
             <div>
               <p class="lfm-subtitle">Similar artists</p>
               <div class="lfm-pill-row" data-lfm-artist-similar>
-                <span class="lfm-empty-state">No similar artists yet.</span>
+                {similarArtistSkeletonItems.map(() => (
+                  <span class="lfm-pill lfm-skeleton-pill" aria-hidden="true"></span>
+                ))}
               </div>
             </div>
           </article>
@@ -394,6 +464,11 @@ export default ((userOpts: LastFmDashboardOptions) => {
     }
 
     .lfm-ranked-item:first-child {
+      border-top: 0;
+      padding-top: 0.15rem;
+    }
+
+    .lfm-recent-item:first-child {
       border-top: 0;
       padding-top: 0.15rem;
     }
@@ -692,6 +767,99 @@ export default ((userOpts: LastFmDashboardOptions) => {
       font-size: 0.84rem;
     }
 
+    .lfm-skeleton-item {
+      pointer-events: none;
+    }
+
+    .lfm-skeleton-line,
+    .lfm-skeleton-pill {
+      display: block;
+      border-radius: 999px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(83, 155, 245, 0.12) 0%,
+          rgba(255, 255, 255, 0.45) 45%,
+          rgba(83, 155, 245, 0.12) 100%
+        );
+      background-size: 200% 100%;
+      animation: lfm-skeleton-shimmer 1.4s ease-in-out infinite;
+    }
+
+    .lfm-skeleton-line {
+      height: 0.82rem;
+    }
+
+    .lfm-skeleton-line-title {
+      width: 78%;
+      height: 0.92rem;
+    }
+
+    .lfm-skeleton-line-meta {
+      width: 56%;
+      margin-top: 0.2rem;
+    }
+
+    .lfm-skeleton-line-submeta {
+      width: 62%;
+      margin-top: 0.12rem;
+      height: 0.74rem;
+    }
+
+    .lfm-skeleton-line-time {
+      width: 4.4rem;
+      justify-self: end;
+    }
+
+    .lfm-skeleton-mini-item {
+      pointer-events: none;
+    }
+
+    .lfm-skeleton-mini-item::before {
+      content: "";
+      counter-increment: none;
+    }
+
+    .lfm-skeleton-line-mini-index {
+      width: 0.9rem;
+      height: 0.72rem;
+    }
+
+    .lfm-skeleton-line-mini-title {
+      width: 72%;
+      height: 0.82rem;
+    }
+
+    .lfm-skeleton-line-mini-time {
+      width: 2.2rem;
+      height: 0.72rem;
+      justify-self: end;
+    }
+
+    .lfm-skeleton-pill {
+      width: 7rem;
+      height: 2rem;
+    }
+
+    [data-lastfm-dashboard][data-lfm-hydrated="false"] .lfm-summary {
+      min-height: calc(1.55em * 5);
+    }
+
+    [data-lastfm-dashboard][data-lfm-hydrated="false"] .lfm-pill-row {
+      min-height: 5.2rem;
+      align-content: flex-start;
+    }
+
+    @keyframes lfm-skeleton-shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
     :root[saved-theme="dark"] .lfm-card {
       border-color: rgba(255, 255, 255, 0.1);
       background:
@@ -728,6 +896,18 @@ export default ((userOpts: LastFmDashboardOptions) => {
     :root[saved-theme="dark"] .lfm-empty-state,
     :root[saved-theme="dark"] .lfm-mini-duration {
       color: rgba(184, 195, 210, 0.8);
+    }
+
+    :root[saved-theme="dark"] .lfm-skeleton-line,
+    :root[saved-theme="dark"] .lfm-skeleton-pill {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(83, 155, 245, 0.16) 0%,
+          rgba(255, 255, 255, 0.12) 45%,
+          rgba(83, 155, 245, 0.16) 100%
+        );
+      background-size: 200% 100%;
     }
 
     :root[saved-theme="dark"] .lfm-chip,
@@ -1504,15 +1684,17 @@ export default ((userOpts: LastFmDashboardOptions) => {
       } catch (_error) {
         widgets.forEach((widget) => {
           const recentList = widget.querySelector("[data-lfm-recent-list]")
-          const recentStatus = widget.querySelector("[data-lfm-recent-status]")
           if (recentList) {
             recentList.innerHTML =
               '<li class="lfm-empty-state">Last.fm did not respond. Try again in a moment.</li>'
           }
-          if (recentStatus) recentStatus.textContent = "Error"
           renderAlbum(widget, null, null)
           renderArtist(widget, null, null)
           renderTopError(widget)
+        })
+      } finally {
+        widgets.forEach((widget) => {
+          widget.setAttribute("data-lfm-hydrated", "true")
         })
       }
     }
