@@ -5,7 +5,7 @@ footer {
   margin-bottom: 4rem;
   opacity: 1;
 
-  & ul {
+  & ul.footer-links {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -15,12 +15,35 @@ footer {
     opacity: 0.7;
   }
 
+  & .internet-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    align-items: center;
+
+    & img {
+      height: 31px;
+      width: auto;
+      opacity: 1;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
   @media all and ($mobile) {
-    & ul {
+    & ul.footer-links {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, max-content));
       gap: 0.5rem 0.9rem;
       justify-content: start;
+    }
+
+    & .internet-buttons {
+      gap: 0.4rem;
     }
   }
 }
