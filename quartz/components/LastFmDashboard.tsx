@@ -524,8 +524,8 @@ export default ((userOpts: LastFmDashboardOptions) => {
       font-weight: 800;
       letter-spacing: 0.08em;
       background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-        linear-gradient(145deg, rgba(83, 155, 245, 0.92), rgba(240, 93, 80, 0.9));
+        linear-gradient(160deg, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.02)),
+        linear-gradient(145deg, rgba(79, 209, 197, 0.95), rgba(255, 138, 91, 0.95));
     }
 
     .lfm-cover-fallback.is-hidden {
@@ -820,6 +820,12 @@ export default ((userOpts: LastFmDashboardOptions) => {
       box-shadow:
         0 22px 40px rgba(0, 0, 0, 0.24),
         inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    :root[saved-theme="dark"] .lfm-cover-fallback {
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01)),
+        linear-gradient(145deg, rgba(79, 209, 197, 0.88), rgba(255, 138, 91, 0.9));
     }
 
     :root[saved-theme="dark"] .lfm-card-head h2,
