@@ -2,4 +2,5 @@
 title: Music
 ---
 
-This page is where my scrobbling widgets live.
+Let the music of your life
+Give life back to music
