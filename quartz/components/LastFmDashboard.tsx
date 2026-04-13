@@ -24,14 +24,10 @@ export default ((userOpts: LastFmDashboardOptions) => {
   const periods = [
     { value: "1month", label: "This Month" },
     { value: "12month", label: "This Year" },
+    { value: "overall", label: "All Time" },
   ] as const
 
   const LastFmDashboard: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
-    const recentSkeletonItems = Array.from({ length: opts.recentLimit ?? defaultOptions.recentLimit })
-    const topSkeletonItems = Array.from({ length: opts.topLimit ?? defaultOptions.topLimit })
-    const spotlightTrackSkeletonItems = Array.from({ length: 6 })
-    const similarArtistSkeletonItems = Array.from({ length: 5 })
-
     return (
       <section
         class={classNames(displayClass, "lfm-dashboard")}
@@ -39,7 +35,7 @@ export default ((userOpts: LastFmDashboardOptions) => {
         data-lfm-hydrated="false"
       >
         <div class="lfm-grid">
-          <article class="lfm-card lfm-card-recent">
+          <article class="lfm-card lfm-card-recent" data-lfm-loading="true">
             <div class="lfm-card-head">
               <div>
                 <p class="lfm-eyebrow">Recent Scrobbles</p>
@@ -54,25 +50,11 @@ export default ((userOpts: LastFmDashboardOptions) => {
               <span>When</span>
             </div>
             <ol class="lfm-recent-list" data-lfm-recent-list>
-              {recentSkeletonItems.map(() => (
-                <li class="lfm-recent-item lfm-skeleton-item" aria-hidden="true">
-                  <div class="lfm-cover-shell lfm-cover-shell-inline">
-                    <div class="lfm-cover-fallback">♫</div>
-                  </div>
-                  <div class="lfm-item-copy lfm-recent-title-copy">
-                    <span class="lfm-skeleton-line lfm-skeleton-line-title"></span>
-                    <span class="lfm-skeleton-line lfm-skeleton-line-meta"></span>
-                    <span class="lfm-skeleton-line lfm-skeleton-line-submeta"></span>
-                  </div>
-                  <span class="lfm-row-cell lfm-row-cell-artist lfm-skeleton-line"></span>
-                  <span class="lfm-row-cell lfm-row-cell-album lfm-skeleton-line"></span>
-                  <span class="lfm-playcount lfm-skeleton-line lfm-skeleton-line-time"></span>
-                </li>
-              ))}
+              <li class="lfm-empty-state">Pulling recent tracks.</li>
             </ol>
           </article>
 
-          <article class="lfm-card lfm-card-top-slice">
+          <article class="lfm-card lfm-card-top-slice" data-lfm-top-card="tracks" data-lfm-loading="true">
             <div class="lfm-panel-head">
               <div>
                 <p class="lfm-eyebrow">Top Listening</p>
@@ -99,24 +81,11 @@ export default ((userOpts: LastFmDashboardOptions) => {
               <span>Plays</span>
             </div>
             <ol class="lfm-ranked-list" data-lfm-top-list="tracks">
-              {topSkeletonItems.map((_, index) => (
-                <li class="lfm-ranked-item lfm-skeleton-item" aria-hidden="true">
-                  <div class="lfm-cover-shell lfm-cover-shell-inline">
-                    <div class="lfm-cover-fallback">♫</div>
-                  </div>
-                  <span class="lfm-rank">#{index + 1}</span>
-                  <div class="lfm-item-copy lfm-ranked-title-copy">
-                    <span class="lfm-skeleton-line lfm-skeleton-line-title"></span>
-                    <span class="lfm-skeleton-line lfm-skeleton-line-meta"></span>
-                  </div>
-                  <span class="lfm-row-cell lfm-row-cell-context lfm-skeleton-line"></span>
-                  <span class="lfm-playcount lfm-skeleton-line lfm-skeleton-line-time"></span>
-                </li>
-              ))}
+              <li class="lfm-empty-state">Loading top tracks.</li>
             </ol>
           </article>
 
-          <article class="lfm-card lfm-card-top-slice">
+          <article class="lfm-card lfm-card-top-slice" data-lfm-top-card="artists" data-lfm-loading="true">
             <div class="lfm-panel-head">
               <div>
                 <p class="lfm-eyebrow">Top Listening</p>
@@ -143,24 +112,11 @@ export default ((userOpts: LastFmDashboardOptions) => {
               <span>Plays</span>
             </div>
             <ol class="lfm-ranked-list" data-lfm-top-list="artists">
-              {topSkeletonItems.map((_, index) => (
-                <li class="lfm-ranked-item lfm-skeleton-item" aria-hidden="true">
-                  <div class="lfm-cover-shell lfm-cover-shell-inline">
-                    <div class="lfm-cover-fallback">ART</div>
-                  </div>
-                  <span class="lfm-rank">#{index + 1}</span>
-                  <div class="lfm-item-copy lfm-ranked-title-copy">
-                    <span class="lfm-skeleton-line lfm-skeleton-line-title"></span>
-                    <span class="lfm-skeleton-line lfm-skeleton-line-meta"></span>
-                  </div>
-                  <span class="lfm-row-cell lfm-row-cell-context lfm-skeleton-line"></span>
-                  <span class="lfm-playcount lfm-skeleton-line lfm-skeleton-line-time"></span>
-                </li>
-              ))}
+              <li class="lfm-empty-state">Loading top artists.</li>
             </ol>
           </article>
 
-          <article class="lfm-card lfm-card-top-slice">
+          <article class="lfm-card lfm-card-top-slice" data-lfm-top-card="albums" data-lfm-loading="true">
             <div class="lfm-panel-head">
               <div>
                 <p class="lfm-eyebrow">Top Listening</p>
@@ -187,24 +143,11 @@ export default ((userOpts: LastFmDashboardOptions) => {
               <span>Plays</span>
             </div>
             <ol class="lfm-ranked-list" data-lfm-top-list="albums">
-              {topSkeletonItems.map((_, index) => (
-                <li class="lfm-ranked-item lfm-skeleton-item" aria-hidden="true">
-                  <div class="lfm-cover-shell lfm-cover-shell-inline">
-                    <div class="lfm-cover-fallback">LP</div>
-                  </div>
-                  <span class="lfm-rank">#{index + 1}</span>
-                  <div class="lfm-item-copy lfm-ranked-title-copy">
-                    <span class="lfm-skeleton-line lfm-skeleton-line-title"></span>
-                    <span class="lfm-skeleton-line lfm-skeleton-line-meta"></span>
-                  </div>
-                  <span class="lfm-row-cell lfm-row-cell-context lfm-skeleton-line"></span>
-                  <span class="lfm-playcount lfm-skeleton-line lfm-skeleton-line-time"></span>
-                </li>
-              ))}
+              <li class="lfm-empty-state">Loading top albums.</li>
             </ol>
           </article>
 
-          <article class="lfm-card lfm-card-spotlight" data-lfm-spotlight="album">
+          <article class="lfm-card lfm-card-spotlight" data-lfm-spotlight="album" data-lfm-loading="true">
             <div class="lfm-card-head">
               <div>
                 <p class="lfm-eyebrow">Album Spotlight</p>
@@ -250,18 +193,12 @@ export default ((userOpts: LastFmDashboardOptions) => {
             <div>
               <p class="lfm-subtitle">Tracks</p>
               <ol class="lfm-mini-list" data-lfm-album-tracks>
-                {spotlightTrackSkeletonItems.map(() => (
-                  <li class="lfm-mini-item lfm-skeleton-mini-item" aria-hidden="true">
-                    <span class="lfm-skeleton-line lfm-skeleton-line-mini-index"></span>
-                    <span class="lfm-skeleton-line lfm-skeleton-line-mini-title"></span>
-                    <span class="lfm-skeleton-line lfm-skeleton-line-mini-time"></span>
-                  </li>
-                ))}
+                <li class="lfm-empty-state">No album tracks yet.</li>
               </ol>
             </div>
           </article>
 
-          <article class="lfm-card lfm-card-spotlight" data-lfm-spotlight="artist">
+          <article class="lfm-card lfm-card-spotlight" data-lfm-spotlight="artist" data-lfm-loading="true">
             <div class="lfm-card-head">
               <div>
                 <p class="lfm-eyebrow">Artist Spotlight</p>
@@ -307,9 +244,7 @@ export default ((userOpts: LastFmDashboardOptions) => {
             <div>
               <p class="lfm-subtitle">Similar artists</p>
               <div class="lfm-pill-row" data-lfm-artist-similar>
-                {similarArtistSkeletonItems.map(() => (
-                  <span class="lfm-pill lfm-skeleton-pill" aria-hidden="true"></span>
-                ))}
+                <span class="lfm-empty-state">No similar artists yet.</span>
               </div>
             </div>
           </article>
@@ -353,6 +288,7 @@ export default ((userOpts: LastFmDashboardOptions) => {
 
     .lfm-card-top-slice {
       grid-column: 1 / -1;
+      isolation: isolate;
     }
 
     .lfm-card-spotlight {
@@ -678,6 +614,38 @@ export default ((userOpts: LastFmDashboardOptions) => {
       color: color-mix(in srgb, var(--secondary) 72%, var(--darkgray) 28%);
     }
 
+    .lfm-card > * {
+      transition:
+        filter 420ms ease,
+        opacity 420ms ease,
+        transform 420ms ease;
+    }
+
+    .lfm-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: rgba(124, 146, 176, 0.12);
+      opacity: 0;
+      pointer-events: none;
+      backdrop-filter: blur(14px) saturate(135%);
+      -webkit-backdrop-filter: blur(14px) saturate(135%);
+      transition: opacity 220ms ease;
+      z-index: 1;
+    }
+
+    .lfm-card[data-lfm-loading="true"] > * {
+      filter: blur(10px) saturate(0.82);
+      opacity: 0.34;
+      transform: scale(0.988);
+      pointer-events: none;
+    }
+
+    .lfm-card[data-lfm-loading="true"]::after {
+      opacity: 1;
+    }
+
     .lfm-spotlight-hero {
       display: grid;
       grid-template-columns: 120px minmax(0, 1fr);
@@ -767,80 +735,6 @@ export default ((userOpts: LastFmDashboardOptions) => {
       font-size: 0.84rem;
     }
 
-    .lfm-skeleton-item {
-      pointer-events: none;
-    }
-
-    .lfm-skeleton-line,
-    .lfm-skeleton-pill {
-      display: block;
-      border-radius: 999px;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(83, 155, 245, 0.12) 0%,
-          rgba(255, 255, 255, 0.45) 45%,
-          rgba(83, 155, 245, 0.12) 100%
-        );
-      background-size: 200% 100%;
-      animation: lfm-skeleton-shimmer 1.4s ease-in-out infinite;
-    }
-
-    .lfm-skeleton-line {
-      height: 0.82rem;
-    }
-
-    .lfm-skeleton-line-title {
-      width: 78%;
-      height: 0.92rem;
-    }
-
-    .lfm-skeleton-line-meta {
-      width: 56%;
-      margin-top: 0.2rem;
-    }
-
-    .lfm-skeleton-line-submeta {
-      width: 62%;
-      margin-top: 0.12rem;
-      height: 0.74rem;
-    }
-
-    .lfm-skeleton-line-time {
-      width: 4.4rem;
-      justify-self: end;
-    }
-
-    .lfm-skeleton-mini-item {
-      pointer-events: none;
-    }
-
-    .lfm-skeleton-mini-item::before {
-      content: "";
-      counter-increment: none;
-    }
-
-    .lfm-skeleton-line-mini-index {
-      width: 0.9rem;
-      height: 0.72rem;
-    }
-
-    .lfm-skeleton-line-mini-title {
-      width: 72%;
-      height: 0.82rem;
-    }
-
-    .lfm-skeleton-line-mini-time {
-      width: 2.2rem;
-      height: 0.72rem;
-      justify-self: end;
-    }
-
-    .lfm-skeleton-pill {
-      width: 7rem;
-      height: 2rem;
-    }
-
     [data-lastfm-dashboard][data-lfm-hydrated="false"] .lfm-summary {
       min-height: calc(1.55em * 5);
     }
@@ -850,14 +744,16 @@ export default ((userOpts: LastFmDashboardOptions) => {
       align-content: flex-start;
     }
 
-    @keyframes lfm-skeleton-shimmer {
-      0% {
-        background-position: 200% 0;
-      }
+    [data-lastfm-dashboard][data-lfm-hydrated="false"] .lfm-card-recent {
+      min-height: 31rem;
+    }
 
-      100% {
-        background-position: -200% 0;
-      }
+    [data-lastfm-dashboard][data-lfm-hydrated="false"] .lfm-card-top-slice {
+      min-height: 23.5rem;
+    }
+
+    [data-lastfm-dashboard][data-lfm-hydrated="false"] .lfm-card-spotlight {
+      min-height: 34rem;
     }
 
     :root[saved-theme="dark"] .lfm-card {
@@ -898,18 +794,6 @@ export default ((userOpts: LastFmDashboardOptions) => {
       color: rgba(184, 195, 210, 0.8);
     }
 
-    :root[saved-theme="dark"] .lfm-skeleton-line,
-    :root[saved-theme="dark"] .lfm-skeleton-pill {
-      background:
-        linear-gradient(
-          90deg,
-          rgba(83, 155, 245, 0.16) 0%,
-          rgba(255, 255, 255, 0.12) 45%,
-          rgba(83, 155, 245, 0.16) 100%
-        );
-      background-size: 200% 100%;
-    }
-
     :root[saved-theme="dark"] .lfm-chip,
     :root[saved-theme="dark"] .lfm-period-tab {
       background: rgba(255, 255, 255, 0.05);
@@ -922,6 +806,10 @@ export default ((userOpts: LastFmDashboardOptions) => {
     :root[saved-theme="dark"] .lfm-pill {
       background: rgba(83, 155, 245, 0.16);
       border-color: rgba(83, 155, 245, 0.28);
+    }
+
+    :root[saved-theme="dark"] .lfm-card[data-lfm-loading="true"]::after {
+      background: rgba(16, 22, 34, 0.22);
     }
 
     :root[saved-theme="dark"] .lfm-ranked-item {
@@ -1127,6 +1015,7 @@ export default ((userOpts: LastFmDashboardOptions) => {
       typeof window.addCleanup === "function" ? window.addCleanup.bind(window) : () => {}
     const relativeFormatter = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" })
     const topItemDetailsCache = new Map()
+    const loadingTimers = new WeakMap()
 
     function normalizeAssetUrl(url) {
       if (typeof url !== "string") return ""
@@ -1641,7 +1530,38 @@ export default ((userOpts: LastFmDashboardOptions) => {
       })
     }
 
-    async function refreshTop(widget, kind, period) {
+    function getTopCard(widget, kind) {
+      return widget.querySelector('[data-lfm-top-card="' + kind + '"]')
+    }
+
+    function setCardLoading(card, loading) {
+      if (!card) return
+
+      const existingTimer = loadingTimers.get(card)
+      if (existingTimer) {
+        clearTimeout(existingTimer)
+        loadingTimers.delete(card)
+      }
+
+      if (loading) {
+        card.setAttribute("data-lfm-loading", "true")
+        return
+      }
+
+      const timer = window.setTimeout(() => {
+        card.removeAttribute("data-lfm-loading")
+        loadingTimers.delete(card)
+      }, 120)
+
+      loadingTimers.set(card, timer)
+    }
+
+    async function refreshTop(widget, kind, period, animate = false) {
+      const card = getTopCard(widget, kind)
+      if (animate && card) {
+        setCardLoading(card, true)
+      }
+
       try {
         const topData = await fetchTop(period)
         renderRankedList(widget, kind, topData[kind] || [])
@@ -1651,12 +1571,24 @@ export default ((userOpts: LastFmDashboardOptions) => {
           listEl.innerHTML =
             '<li class="lfm-empty-state">Could not load this list from Last.fm right now.</li>'
         }
+      } finally {
+        if (card) {
+          setCardLoading(card, false)
+        }
       }
     }
 
     async function refreshDashboard() {
       const widgets = document.querySelectorAll("[data-lastfm-dashboard]")
       if (!widgets.length) return
+
+      widgets.forEach((widget) => {
+        if (widget.getAttribute("data-lfm-hydrated") === "false") {
+          widget.querySelectorAll("[data-lfm-loading]").forEach((card) => {
+            setCardLoading(card, true)
+          })
+        }
+      })
 
       try {
         const recentTracks = await fetchRecentTracks()
@@ -1677,7 +1609,7 @@ export default ((userOpts: LastFmDashboardOptions) => {
           Array.from(widgets).flatMap((widget) =>
             ["tracks", "artists", "albums"].map((kind) => {
               const period = widget.getAttribute("data-lfm-period-" + kind) || "1month"
-              return refreshTop(widget, kind, period)
+              return refreshTop(widget, kind, period, false)
             }),
           ),
         )
@@ -1695,6 +1627,9 @@ export default ((userOpts: LastFmDashboardOptions) => {
       } finally {
         widgets.forEach((widget) => {
           widget.setAttribute("data-lfm-hydrated", "true")
+          widget.querySelectorAll("[data-lfm-loading]").forEach((card) => {
+            setCardLoading(card, false)
+          })
         })
       }
     }
@@ -1713,7 +1648,7 @@ export default ((userOpts: LastFmDashboardOptions) => {
           const kind = button.getAttribute("data-lfm-kind") || "tracks"
           widget.setAttribute("data-lfm-period-" + kind, period)
           setActivePeriod(widget, kind, period)
-          await refreshTop(widget, kind, period)
+          await refreshTop(widget, kind, period, true)
         })
       })
     }
