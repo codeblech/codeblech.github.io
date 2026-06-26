@@ -8,11 +8,12 @@ tags:
 >[!Note]
 >A markdown version of this resume is present on [my Github](https://github.com/codeblech/codeblech.github.io/blob/bcdfc96c86c7dc16f4c978b70fcf9e9dd28fcf88/content/My%20Resume.md). The version on my website is generated using the markdown version.
 
+
 # Yash Malik
 
 Gurugram, India
 
-[yashmalik.tech](https://yashmalik.tech/) | [my.malikyash@gmail.com](mailto:my.malikyash@gmail.com) | [malikyash](https://www.linkedin.com/in/malikyash) | [codeblech](https://github.com/codeblech) | +91 99977 03037
+[yashmalik.in](https://yashmalik.in/) | [my.malikyash@gmail.com](mailto:my.malikyash@gmail.com) | [malikyash](https://www.linkedin.com/in/malikyash) | [codeblech](https://github.com/codeblech) | +91 99977 03037
 
 ## Education
 
@@ -28,8 +29,10 @@ Gurugram, India
 *Cloud Engineering Intern*  
 *Jan 2026 – Present*
 
-- Architecting an Internal Developer Platform using Backstage for a team of 1000+ developers.
-- Tech stack: **Kubernetes, ArgoCD, Terraform, Prometheus, Elasticsearch, Helm**
+- Designed and Engineered an Internal Developer Platform using Backstage for a team of 1000+ developers.
+- Developed and bootstrapped a software catalog by ingesting GitLab repos, internal helm charts, and internal tools that wrap cloudquery and osquery.
+- Created Backstage plugins to create scorecards for microservices based on alerts and incidents data.
+- Tech stack: **Kubernetes, ArgoCD, Terraform, Prometheus, Elasticsearch, Helm, Jenkins**
 
 **[AI Planet](https://aiplanet.com/)**  
 Belgium, Remote  
@@ -68,19 +71,19 @@ New Delhi, Remote
 **Other Contributions, *Contributor***  
 *Dec 2023 – Present*
 
-- Designed a [logo](https://app.element.io/#/room/#sunpy-offtopic:openastronomy.org) for SunPy's Matrix channel
+- Contributed to the documentation of SunPy, Claude (Anthropic), ChromaDB, auto-train (Hugging Face), ytmusicapi, Instaloader, mamba, and designed the [official logo](https://app.element.io/#/room/#sunpy-offtopic:openastronomy.org) for SunPy's Matrix channel
 
 ## Skills
 
-- **Tools & Technologies:** Linux, Git, Django, Flask, FastAPI, Prefect, Temporal, React, Tailwind, FFmpeg, Make, LangChain, AutoGen
-- **Cloud & Infrastructure:** AWS, Azure, GCP, Kubernetes, Docker, Terraform, ArgoCD, Helm, Grafana K6, Prometheus, Elasticsearch, Jenkins, Backstage
-- **Languages & Databases:** Python, C/C++, JavaScript, TypeScript, Bash, PostgreSQL, Redis, Supabase, Weaviate, ChromaDB, Alembic
+- **Tools & Technologies:** Linux, Git, Django, FastAPI, Prefect, Temporal, React, FFmpeg, LangChain, AutoGen
+- **Cloud & Infrastructure:** Kubernetes, Docker, Terraform, ArgoCD, Prometheus, Elasticsearch, Jenkins, AWS, Azure, GCP
+- **Languages & Databases:** Python, C/C++, JavaScript, TypeScript, Bash, PostgreSQL, Redis, Supabase, Weaviate
 
 ## Personal Projects
 
 **[JPortal](https://github.com/codeblech/jportal)**
 
-- Developed a Progressive Web App with **7000+ daily visits**, providing students real-time access to attendance, grades, and exam schedules. Deployed on [GitHub Pages](https://codeblech.github.io/jportal)  
+- Developed a Progressive Web App with **7000+ daily visits**, providing students real-time access to attendance, grades, and exam schedules. Deployed on [Cloudflare Pages](https://jportal.jmut.de)  
   Tech Stack: **React, Vite, Tailwind, Python, WebAssembly (via Pyodide), JavaScript**.
 
 **[JC-62 Simulator](https://github.com/codeblech/jaycee-62)**
@@ -99,13 +102,13 @@ New Delhi, Remote
 
 - Engineered a Terraform-controlled Spotify playlist management system. Implemented CI/CD pipeline using GitHub Actions for automatic playlist updates on push to main branch.
 
+**[AutoGCR](https://github.com/codeblech/autogcr)**
+
+- Developed a command-line tool to solve & upload college assignments to Google Classroom. Tech Stack: **Python, nodriver (browser automation), Gemini API**
+
 **[Music Meme Generators](https://github.com/stars/codeblech/lists/music)**
 
 - Developed a suite of Python-based pipelines for generating memes from album covers sourced from music streaming services, employing image processing techniques like perspective transform and masking. Automated upload of memes to Instagram. Tech Stack: **Python, Pillow, scikit-image, FFMPEG, bash, Instagram Graph API, Imgur REST API**
-
-
-**[AutoGCR](https://github.com/codeblech/autogcr)**
-- Developed a command-line tool to solve & upload college assignments to Google Classroom. Tech Stack: **Python, nodriver (browser automation), Gemini API**
 
 **[Aim Booster](https://github.com/codeblech/aim-booster)**
 
@@ -117,7 +120,7 @@ New Delhi, Remote
 
 **[Aakash eBook Scraper](https://github.com/codeblech/pwn-aakash)**
 
-- Scrapes eBooks from Aakash WebPortal. Automated a tedious manual process for 100+ classmates. Bypassed anti-bot checks on Aakash’s website. Tech Stack: **Python, Selenium, pyscreenshot**
+- Scrapes eBooks from Aakash WebPortal. Automated a tedious manual process for 100+ classmates. Bypassed anti-bot checks on Aakash's website. Tech Stack: **Python, Selenium, pyscreenshot**
 
 **[DaftPunker](https://github.com/codeblech/daftpunker)**
 
@@ -126,8 +129,8 @@ New Delhi, Remote
 ## Positions of Responsibility
 
 **Core Team Member @ Open Source Developers Community, JIIT**  
-*July 2023 – Present*  
-Organizing weekly meetups, in-person hackathons with 400+ participants, events, talks, mentoring, and outreach
+*July 2023 – May 2025*  
+Organized weekly meetups, in-person hackathons with 400+ participants, events, talks, mentoring, and outreach.
 
 **Strategic Head @ PageTunerSociety, JIIT**  
 *July 2024 – May 2025*  
