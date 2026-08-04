@@ -1,0 +1,1 @@
+../../../../obsidian/I Wanna Do Great Work.md

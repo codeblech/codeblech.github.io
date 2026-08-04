@@ -1,0 +1,80 @@
+filters:
+  and:
+    - categories.contains(link("Books"))
+    - '!file.name.contains("Template")'
+properties:
+  note.author:
+    displayName: Author
+  file.name:
+    displayName: Name
+  note.year:
+    displayName: Year
+  note.genre:
+    displayName: Genre
+views:
+  - type: cards
+    name: Cards – Mobile
+    order:
+      - file.name
+      - author
+      - pages
+      - year
+    sort:
+      - property: file.ctime
+        direction: DESC
+      - property: file.name
+        direction: ASC
+    cardSize: 190
+    image: note.cover
+    imageAspectRatio: 1.4
+  - type: cards
+    name: Cards – Desktop
+    order:
+      - file.name
+      - author
+      - pages
+      - year
+      - genre
+      - scoreGr
+      - read
+    sort:
+      - property: file.ctime
+        direction: DESC
+      - property: file.name
+        direction: ASC
+    columnSize:
+      note.pages: 84
+      note.year: 65
+    cardSize: 200
+    image: note.cover
+    imageAspectRatio: 1.45
+  - type: table
+    name: Top rated
+    order:
+      - file.name
+      - rating
+      - last
+    sort:
+      - property: last
+        direction: DESC
+  - type: table
+    name: Author
+    filters:
+      and:
+        - list(author).contains(this)
+    order:
+      - file.name
+      - year
+      - genre
+    sort:
+      - property: genre
+        direction: ASC
+  - type: table
+    name: Genre
+    filters:
+      and:
+        - list(genre).contains(this)
+    order:
+      - file.name
+      - year
+      - genre

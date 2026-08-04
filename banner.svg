@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="256" class="svgbob"><style>.svgbob line, .svgbob path, .svgbob circle, .svgbob rect, .svgbob polygon {
+    stroke: white;
+    stroke-width: 2;
+    stroke-opacity: 1;
+    fill-opacity: 1;
+    stroke-linecap: round;
+    stroke-linejoin: miter;
+}
+.svgbob text {
+    white-space: pre;
+    fill: white;
+    font-family: Iosevka Fixed, monospace;
+    font-size: 14px;
+}
+.svgbob rect.backdrop {
+    stroke: none;
+    fill: none;
+}
+.svgbob .broken {
+    stroke-dasharray: 8;
+}
+.svgbob .filled {
+    fill: white;
+}
+.svgbob .bg_filled {
+    fill: white;
+    stroke-width: 1;
+}
+.svgbob .nofill {
+    fill: white;
+}
+.svgbob .end_marked_arrow {
+    marker-end: url(#arrow);
+}
+.svgbob .start_marked_arrow {
+    marker-start: url(#arrow);
+}
+.svgbob .end_marked_diamond {
+    marker-end: url(#diamond);
+}
+.svgbob .start_marked_diamond {
+    marker-start: url(#diamond);
+}
+.svgbob .end_marked_circle {
+    marker-end: url(#circle);
+}
+.svgbob .start_marked_circle {
+    marker-start: url(#circle);
+}
+.svgbob .end_marked_open_circle {
+    marker-end: url(#open_circle);
+}
+.svgbob .start_marked_open_circle {
+    marker-start: url(#open_circle);
+}
+.svgbob .end_marked_big_open_circle {
+    marker-end: url(#big_open_circle);
+}
+.svgbob .start_marked_big_open_circle {
+    marker-start: url(#big_open_circle);
+}<!--separator--></style><defs><marker id="arrow" viewBox="-2 -2 8 8" refX="4" refY="2" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><polygon points="0,0 0,4 4,2 0,0"></polygon></marker><marker id="diamond" viewBox="-2 -2 8 8" refX="4" refY="2" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><polygon points="0,2 2,0 4,2 2,4 0,2"></polygon></marker><marker id="circle" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><circle cx="4" cy="4" r="2" class="filled"></circle></marker><marker id="open_circle" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><circle cx="4" cy="4" r="2" class="bg_filled"></circle></marker><marker id="big_open_circle" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><circle cx="4" cy="4" r="3" class="bg_filled"></circle></marker></defs><rect class="backdrop" x="0" y="0" width="480" height="256"></rect><text x="2" y="12" >o</text><text x="130" y="12" >.</text><line x1="224" y1="8" x2="248" y2="8" class="solid"></line><line x1="248" y1="16" x2="272" y2="16" class="solid"></line><text x="162" y="44" >.</text><text x="178" y="44" >.;</text><text x="202" y="44" >.</text><text x="306" y="44" >.</text><line x1="160" y1="48" x2="144" y2="80" class="solid"></line><text x="162" y="60" >;</text><text x="298" y="60" >.</text><line x1="312" y1="48" x2="328" y2="80" class="solid"></line><text x="186" y="76" >'</text><text x="250" y="76" >.</text><text x="282" y="76" >.;</text><text x="138" y="92" >|</text><text x="154" y="92" >.</text><text x="330" y="92" >|</text><text x="218" y="108" >|</text><text x="258" y="108" >;</text><text x="322" y="108" >.</text><text x="266" y="124" >.</text><text x="282" y="124" >;</text><text x="210" y="140" >.</text><text x="266" y="140" >,</text><text x="202" y="156" >.</text><text x="218" y="156" >;</text><text x="218" y="172" >.</text><text x="242" y="172" >.</text><text x="266" y="172" >;</text><text x="266" y="188" >.</text><text x="218" y="204" >.</text><line x1="176" y1="216" x2="200" y2="216" class="broken"></line><line x1="200" y1="224" x2="224" y2="224" class="solid"></line><text x="234" y="220" >;</text><line x1="248" y1="224" x2="272" y2="224" class="solid"></line><line x1="272" y1="216" x2="296" y2="216" class="broken"></line><line x1="224" y1="232" x2="248" y2="232" class="solid"></line><text x="434" y="12" >.</text><text x="58" y="28" >.</text><text x="338" y="28" >.</text><text x="386" y="28" >.</text><text x="466" y="28" >.</text><text x="10" y="76" >.</text><text x="82" y="76" >.</text><line x1="396" y1="64" x2="396" y2="84" class="solid"></line><line x1="384" y1="88" x2="396" y2="88" class="solid end_marked_big_open_circle"></line><line x1="396" y1="92" x2="396" y2="112" class="solid"></line><line x1="400" y1="88" x2="408" y2="88" class="solid"></line><text x="466" y="92" >.</text><text x="242" y="108" >.</text><text x="26" y="140" >.</text><text x="66" y="140" >o</text><text x="434" y="140" >.</text><line x1="36" y1="160" x2="36" y2="180" class="solid"></line><line x1="24" y1="184" x2="36" y2="184" class="solid end_marked_big_open_circle"></line><line x1="36" y1="188" x2="36" y2="208" class="solid"></line><line x1="40" y1="184" x2="48" y2="184" class="solid"></line><text x="354" y="172" >.</text><text x="114" y="188" >.</text><text x="466" y="188" >.</text><text x="74" y="204" >.</text><text x="394" y="204" >o</text><text x="18" y="220" >.</text><text x="138" y="236" >.</text><text x="322" y="236" >.</text><g><line x1="200" y1="16" x2="224" y2="16" class="solid"></line><path d="M 184,24 A 8,8 0,0,0 178,28" class="nofill"></path><line x1="178" y1="28" x2="168" y2="48" class="solid"></line><line x1="184" y1="24" x2="204" y2="24" class="solid"></line><line x1="200" y1="16" x2="218" y2="52" class="solid"></line><line x1="192" y1="48" x2="200" y2="48" class="solid"></line><line x1="192" y1="48" x2="184" y2="64" class="solid"></line><line x1="200" y1="48" x2="208" y2="56" class="solid"></line><line x1="204" y1="48" x2="204" y2="52" class="solid"></line><path d="M 204,52 A 4,4 0,0,0 208,56" class="nofill"></path><line x1="208" y1="56" x2="216" y2="56" class="solid"></line><path d="M 218,52 A 3,3 0,0,1 216,56" class="nofill"></path></g><g><line x1="272" y1="24" x2="288" y2="24" class="solid"></line><path d="M 288,24 A 8,8 0,0,1 294,28" class="nofill"></path><line x1="294" y1="28" x2="304" y2="48" class="solid"></line></g><g><line x1="256" y1="48" x2="272" y2="48" class="solid"></line><line x1="280" y1="32" x2="272" y2="48" class="solid"></line><line x1="276" y1="40" x2="288" y2="40" class="broken"></line><line x1="240" y1="64" x2="264" y2="64" class="solid"></line><line x1="256" y1="48" x2="264" y2="64" class="solid"></line><line x1="240" y1="64" x2="224" y2="96" class="solid"></line></g><g><path d="M 168,72 A 4,4 0,0,0 164,76" class="nofill"></path><line x1="164" y1="76" x2="164" y2="88" class="solid"></line><line x1="168" y1="72" x2="184" y2="72" class="solid"></line><line x1="164" y1="88" x2="152" y2="112" class="solid"></line><line x1="132" y1="96" x2="132" y2="144" class="solid"></line><line x1="132" y1="112" x2="152" y2="112" class="solid"></line></g><g><line x1="288" y1="96" x2="308" y2="96" class="solid"></line><line x1="288" y1="96" x2="292" y2="104" class="solid"></line><line x1="292" y1="104" x2="292" y2="132" class="solid"></line><line x1="308" y1="96" x2="308" y2="112" class="solid"></line><line x1="272" y1="136" x2="288" y2="136" class="solid"></line><path d="M 292,132 A 4,4 0,0,1 288,136" class="nofill"></path></g><g><line x1="192" y1="112" x2="208" y2="112" class="solid"></line><line x1="192" y1="112" x2="184" y2="128" class="solid"></line><line x1="208" y1="112" x2="216" y2="128" class="solid"></line><line x1="184" y1="128" x2="188" y2="136" class="solid"></line><line x1="188" y1="136" x2="188" y2="160" class="solid"></line></g><g><line x1="340" y1="96" x2="340" y2="144" class="solid"></line><line x1="304" y1="112" x2="312" y2="128" class="solid"></line><line x1="312" y1="128" x2="340" y2="128" class="solid"></line></g><g><line x1="216" y1="112" x2="232" y2="144" class="solid"></line><line x1="224" y1="128" x2="232" y2="128" class="solid"></line><line x1="216" y1="136" x2="228" y2="136" class="broken"></line><line x1="232" y1="128" x2="240" y2="144" class="solid"></line><line x1="240" y1="144" x2="264" y2="144" class="solid"></line><line x1="232" y1="152" x2="268" y2="152" class="broken"></line><line x1="264" y1="144" x2="272" y2="160" class="solid"></line><line x1="272" y1="160" x2="280" y2="160" class="solid"></line><line x1="280" y1="160" x2="284" y2="168" class="solid"></line><line x1="284" y1="168" x2="284" y2="184" class="solid"></line><line x1="284" y1="184" x2="272" y2="208" class="solid"></line></g><g><line x1="140" y1="144" x2="140" y2="152" class="solid"></line><line x1="140" y1="152" x2="160" y2="192" class="solid"></line></g><g><line x1="312" y1="160" x2="332" y2="160" class="solid"></line><line x1="312" y1="160" x2="304" y2="176" class="solid"></line><line x1="332" y1="144" x2="332" y2="152" class="solid"></line><line x1="332" y1="152" x2="312" y2="192" class="solid"></line><line x1="304" y1="176" x2="320" y2="176" class="solid"></line><line x1="304" y1="184" x2="316" y2="184" class="broken"></line></g><g><line x1="184" y1="160" x2="192" y2="176" class="solid"></line><line x1="192" y1="176" x2="184" y2="192" class="solid"></line><line x1="184" y1="192" x2="192" y2="208" class="solid"></line></g><g><line x1="160" y1="200" x2="172" y2="200" class="broken"></line><line x1="168" y1="192" x2="176" y2="208" class="solid"></line></g><g><line x1="304" y1="192" x2="296" y2="208" class="solid"></line><line x1="300" y1="200" x2="312" y2="200" class="broken"></line></g></svg>
