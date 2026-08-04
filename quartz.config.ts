@@ -13,7 +13,7 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "plausible",
+      { provider: 'posthog', apiKey: 'phc_DcvE4dMu4cEnxRCPeoR6DeHSov5TUwBdC5Caa3btEt5r', host: 'https://eu.i.posthog.com' }
     },
     locale: "en-US",
     baseUrl: "codeblech.github.io/",
