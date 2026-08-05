@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: 'posthog', apiKey: 'phc_DcvE4dMu4cEnxRCPeoR6DeHSov5TUwBdC5Caa3btEt5r', host: 'https://eu.i.posthog.com', 
     },
     locale: "en-US",
-    baseUrl: "codeblech.github.io/",
+    baseUrl: "yashmalik.in",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "published",
     theme: {
