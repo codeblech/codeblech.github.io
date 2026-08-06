@@ -2,12 +2,35 @@
 @use "./variables.scss" as *;
 
 
+.not-found-img {
+  display: block;
+  margin: 0 auto 1.5rem;
+  max-width: 260px;
+  border-radius: 12px;
+}
+
+pre.not-found-poem {
+  line-height: 1.7;
+  white-space: pre-wrap;
+  margin: 0 auto 3rem;
+  border: none;
+  padding: 0;
+}
+
 body[data-slug="index"] img[src*="banner.svg"] {
   filter: invert(100%);
 }
 
 [saved-theme="dark"] body[data-slug="index"] img[src*="banner.svg"] {
   filter: invert(0%);
+}
+
+body[data-slug="404"] img[src*="the-raven"] {
+  filter: invert(0%);
+}
+
+[saved-theme="dark"] body[data-slug="404"] img[src*="the-raven"] {
+  filter: invert(100%);
 }
 pre.poetry {
   font-size: 1.4rem;
