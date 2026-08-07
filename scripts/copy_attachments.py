@@ -9,6 +9,7 @@ Handles both Obsidian-style embeds/links and standard markdown links:
     [[document.pdf]]                    (wiki link to an attachment)
     ![alt text](Attachments/img.png)    (markdown image)
     [label](Attachments/document.pdf)   (markdown link to an attachment)
+    <img src="Attachments/img.png">     (HTML image tag)
 
 Files are copied into content/ preserving their path relative to the vault
 root (e.g. Attachments/foo.png -> content/Attachments/foo.png) so existing
@@ -42,6 +43,7 @@ IGNORED_DIRS = {".git", ".obsidian", ".trash", ".smart-env", ".claude", "node_mo
 FENCED_CODE_RE = re.compile(r"```.*?```|~~~.*?~~~", re.DOTALL)
 WIKI_RE = re.compile(r"(!?)\[\[([^\]|#]+)(?:[#|][^\]]*)?\]\]")
 MD_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+HTML_IMG_RE = re.compile(r'<img\b[^>]*\bsrc\s*=\s*["\']([^"\']+)["\']', re.IGNORECASE)
 
 
 def strip_code_blocks(text: str) -> str:
@@ -63,6 +65,16 @@ def find_references(md_file: Path) -> list[str]:
     for raw_target in MD_RE.findall(text):
         target = unquote(raw_target.strip().strip("<>")).split("#")[0].strip()
         if not target or "://" in target or target.startswith("mailto:"):
+            continue
+        if Path(target).suffix.lower() in ATTACHMENT_EXTS:
+            refs.append(target)
+
+    for raw_target in HTML_IMG_RE.findall(text):
+        target = unquote(raw_target.strip()).split("#")[0].strip()
+        if not target or "://" in target or target.startswith("mailto:"):
+            continue
+        # Site-absolute paths (e.g. /banner.svg) are static assets, not vault files.
+        if target.startswith("/"):
             continue
         if Path(target).suffix.lower() in ATTACHMENT_EXTS:
             refs.append(target)
