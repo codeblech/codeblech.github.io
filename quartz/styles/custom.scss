@@ -2,6 +2,10 @@
 @use "./variables.scss" as *;
 
 
+.explorer-content ul li {
+  margin-block: 0.35rem;
+}
+
 .not-found-img {
   display: block;
   margin: 0 auto 1.5rem;

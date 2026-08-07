@@ -1,5 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { FileTrieNode } from "./quartz/util/fileTrie"
 
 const lastFmConfig = {
   username: "yashmalik",
@@ -19,6 +20,43 @@ const lastFmDashboardOnMusic = Component.ConditionalRender({
   component: lastFmDashboard,
   condition: (page) => page.fileData.slug === "music",
 })
+
+const explorerOptions = {
+  sortFn: (a: FileTrieNode, b: FileTrieNode) => {
+    if (a.isFolder !== b.isFolder) {
+      return a.isFolder ? -1 : 1
+    }
+
+    let aNewest = 0
+    const aStack = [a]
+    while (aStack.length > 0) {
+      const node = aStack.pop()!
+      if (node.data?.date) {
+        aNewest = Math.max(aNewest, new Date(node.data.date).getTime())
+      }
+      aStack.push(...node.children)
+    }
+
+    let bNewest = 0
+    const bStack = [b]
+    while (bStack.length > 0) {
+      const node = bStack.pop()!
+      if (node.data?.date) {
+        bNewest = Math.max(bNewest, new Date(node.data.date).getTime())
+      }
+      bStack.push(...node.children)
+    }
+
+    if (aNewest !== bNewest) {
+      return bNewest - aNewest
+    }
+
+    return a.displayName.localeCompare(b.displayName, undefined, {
+      numeric: true,
+      sensitivity: "base",
+    })
+  },
+}
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -61,7 +99,7 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer(explorerOptions),
   ],
   right: [
     Component.Graph(),
@@ -89,7 +127,7 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer(explorerOptions),
   ],
   right: [],
 }
